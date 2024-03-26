@@ -1,0 +1,13 @@
+.custom-header {
+  display: flex;
+  justify-content: space-between; /* Coloca los elementos a cada extremo */
+  align-items: center; /* Centra verticalmente los elementos */
+  padding: 10px 20px 10px 20px; /* Puedes ajustar esto según sea necesario */
+  background-color: #ffffff; /* Puedes cambiar el color de fondo según el diseño */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Añade la sombra solo abajo */
+}
+
+.logoU {
+  width: 150px; /* Puedes ajustar el tamaño del logo según sea necesario */
+  height: auto;
+}
