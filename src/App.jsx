@@ -2,7 +2,12 @@ import "./App.css";
 
 import Header from "./Components/Layout/Header.jsx";
 import Footer from "./Components/Layout/Footer.jsx";
-import DownloadButton from "./Components/UI/DownloadButton.jsx";
+import IconButton from "./Components/UI/IconButton.jsx";
+import Button from "./Components/UI/Button.jsx";
+import SelectDropdown from "./Components/UI/SelectDropdown.jsx";
+import Sidebar from "./Components/Layout/Sidebar.jsx";
+
+import DownloadIcon from "./Assets/download.svg";
 
 function App() {
   return (
@@ -14,7 +19,19 @@ function App() {
         <Footer />
       </div>
       <div>
-        <DownloadButton />
+        <IconButton buttonText="DESCARGAR ARCHIVO" iconSrc={DownloadIcon} />
+      </div>
+      <div>
+        <Button buttonText="INICIAR SESIÓN" />
+      </div>
+      <div>
+        <SelectDropdown
+          placeholder="Selecciona una opción"
+          options={["Opción 1", "Opción 2", "Opción 3", "Opción 4"]}
+        />
+      </div>
+      <div>
+        <Sidebar />
       </div>
     </>
   );
