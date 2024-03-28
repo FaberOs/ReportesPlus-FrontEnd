@@ -1,0 +1,14 @@
+.button-prueba {
+    background-color: #000066;
+    color: #ffffff;
+    border-radius: 10px; /* Ensure consistent unit for borderRadius */
+    border: none;
+    min-width: 220px;
+    min-height: 50px;
+    display: flex; /* Center content within the button */
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    font-family: "Open Sans";
+    font-weight: 500;
+}
