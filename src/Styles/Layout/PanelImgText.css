@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    html,
+    body {
+        font-size: 18px;
+        background-color: #f5f6f7;
+    }
+
+    h1 {
+        max-width: 940;
+        font-size: 2.5em;
+        font-family: Lato, sans-serif;
+        font-weight: 700;
+        line-height: 1.1;
+        margin: 40px 0;
+        margin: 40px auto;
+    }
+
+    .App {
+        min-height: 100vh;
+        /*min. cap. vertical*/
+        display: flex;
+        /*flex box*/
+        flex-wrap: wrap;
+        /*desborde contenedores abajo*/
+        align-items: center;
+        /*alinea vertical?*/
+        justify-content: center;
+        /*vertical=*/
+        text-align: center;
+    }
+
+    .contenedor-principal {
+        min-height: 600px;
+        /*altura min.*/
+        display: flex;
+        /*flex box*/
+        flex-wrap: wrap;
+        /*desborde contenedores abajo*/
+        align-items: center;
+        /*alinea vertical?*/
+        justify-content: center;
+        /*vertical=*/
+    }
+
+}

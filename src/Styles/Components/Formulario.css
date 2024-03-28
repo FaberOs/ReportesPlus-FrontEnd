@@ -1,0 +1,89 @@
+:root {
+    --color-primario: #000066;
+    --fuente-principal: "Open Sans", sans-serif;
+    --font-size-base: 16px;
+  }
+  
+  .titulo-formulario{
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    text-align: center;
+    align-items: center; /* eje Y */
+    justify-content: center; /* eje X */
+    font-weight: 760; /*negrilla*/
+    padding-top: 20px; 
+    padding-bottom: 15px
+    
+  }
+  
+  .codigo-formulario{
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    font-size: var(--font-size-base);
+    font-weight: 620; /*negrilla Regular?*/
+    text-align: justify; /*izq. a der.*/
+    padding-top: 20px; 
+    padding-bottom: 15px
+  }
+  
+  
+  
+  .button-text {
+    flex-grow: 1; /* Hace que el texto ocupe el espacio disponible */
+  }
+  
+  .button-icon {
+    order: 2;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .custom-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-width: 3px; /* Ancho del borde */
+    border-radius: 25px; /* Radio de borde */
+    border-color: blue; /* Color del borde */
+    padding: 10px 20px; /* Relleno arriba y abajo */
+    text-align: justify; /* Alineación de texto */
+  }
+  
+  
+  
+  .buttonStyles {
+    backgroundColor: '#007bff';
+    color: '#ffffff',
+  };
+  
+  .botonn {
+    backgroundColor: rgb(56, 233, 37);
+    color: red;
+    font-family: Arial, sans-serif !important;
+  }
+  
+  .container {
+    max-width: none;
+    width: 100%;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .button:hover {
+    background-color: blue;
+    /*transition: background-color 0.2s ease-in-out;*/
+  }
+  
+  .botonPrueba{
+    background-color: var(--color-primario);
+    color: #ffffff;
+    border: none;
+    min-Width: 220px
+  }
+  
+  

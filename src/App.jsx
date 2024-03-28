@@ -7,6 +7,8 @@ import Button from "./Components/UI/Button.jsx";
 import SelectDropdown from "./Components/UI/SelectDropdown.jsx";
 import Sidebar from "./Components/Layout/Sidebar.jsx";
 import Button_C from "./Components/UI/Button_C.jsx";
+import Formulario from "./Components/Features/Formulario.jsx";
+import PanelImgText from "./Components/Layout/PanelImgText.jsx"
 
 import DownloadIcon from "./Assets/download.svg";
 
@@ -31,9 +33,23 @@ function App() {
           options={["Opción 1", "Opción 2", "Opción 3", "Opción 4"]}
         />
       </div>
+
+      <div>
+        <Button_C buttonText="CONSULTAR"/>
+      </div>
+
+      <div>
+        <PanelImgText/>
+      </div>
+
       <div>
         <Sidebar />
       </div>
+
+      
+      
+
+      
       
     </>
   );
