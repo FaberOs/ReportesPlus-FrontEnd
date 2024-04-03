@@ -1,0 +1,37 @@
+/* IconButton.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+.btn-IconButton {
+  font-family: "Open Sans", sans-serif;
+  background: var(--blue);
+  border-radius: 25px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--blue);
+  width: auto;
+  height: auto;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-IconButton:hover {
+  background-color: var(--white);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.icon {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.btn-IconButton:hover .icon svg path {
+  fill: #000066;
+}

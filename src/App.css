@@ -1,0 +1,26 @@
+:root {
+  --dark: #000000;
+  --light-gray: #ededed;
+  --gray: #d9d9d9;
+  --dark-gray: #3c3c3b;
+  --white: #ffffff;
+  --blue: #000066;
+}
+
+*::selection {
+  background: var(--blue);
+  color: var(--white);
+}
+
+*::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+}

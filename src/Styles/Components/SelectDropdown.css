@@ -1,0 +1,58 @@
+/* SelectDropdown.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+.dropdown {
+  width: 100%; /* Cambiado a ancho completo para que sea adaptable */
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  background-color: var(--white);
+  border-radius: 15px;
+  border: 2px solid var(--blue);
+  cursor: pointer;
+}
+
+.selectedValue {
+  color: var(--blue);
+  font-size: 14px;
+}
+
+.select-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--blue);
+}
+
+.options-container {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  max-height: 200px; /* Establece una altura máxima para hacerlo desplazable */
+  overflow-y: auto; /* Hace que las opciones sean desplazables */
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+.option {
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 5px 15px;
+  cursor: pointer;
+  color: var(--blue);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.option:hover {
+  background-color: var(--light-gray);
+}
