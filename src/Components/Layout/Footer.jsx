@@ -1,42 +1,75 @@
-//import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
+//import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "../../Styles/Layout/Footer.css"; // Archivo CSS para estilos personalizados
 
 import UInfo from "../../Assets/UInfo.svg";
 import GovInfo from "../../Assets/GovInfo.svg";
 import Telefono from "../../Assets/Telefono.svg";
 
-const Footer = () => {
+const MiFooter = () => {
   return (
-    <footer className="bg-light text-muted py-3">
-      <div className="container">
-        <div className="row">
-          <div className="col-4">
-            <h5 className="text-dark">Universidad del Cauca</h5>
-            <p>NIT. 891500319-2</p>
-            <img src={UInfo} alt="Logo 1" className="me-2" />
-            <img src={GovInfo} alt="Logo 2" className="me-2" />
-            {/* Add additional logos as needed */}
-          </div>
-          <div className="col-4">
-            <p>
-              Institución con Acreditación de Alta Calidad por 8 años resolución
-              MEN 621B de 2019 - Vigilada MinEducación
-            </p>
-            <p>Comunícate con nuestro Soporte Técnico</p>
-          </div>
-          <div className="col-4">
-            <h5 className="text-dark">Universidad Del Cauca</h5>
-            <p>Vicerrectoría Administrativa</p>
-            <div className="d-flex align-items-center mt-3">
-              <img src={Telefono} alt="Phone" className="me-2" />
-              <span>+57 (602) 8209900</span>
+    <div className="main-footer">
+      <Container>
+        <Row className="footer-row">
+          {/* Columna 1 */}
+          <Col md={1} sm={1} className="columna">
+            <div>{/* Columna vacía */}</div>
+          </Col>
+          {/* Columna 2 */}
+          <Col md={3} sm={3} className="columna">
+            <div className="universidad-info">
+              <h4>Universidad del Cauca</h4>
+              <p>NIT. 891500319-2</p>
+              <div className="logos">
+                <img src={UInfo} alt="Logo 1" className="logo1" />
+                <img src={GovInfo} alt="Logo 2" className="logo2" />
+              </div>
             </div>
-            <p>Versión 1.0.0</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+          </Col>
+          {/* Columna 3 */}
+          <Col md={1} sm={1} className="columna">
+            <div>{/* Columna vacía */}</div>
+          </Col>
+          {/* Columna 4 */}
+          <Col md={2} sm={6} className="columna right-align">
+            <div>
+              <p>Universidad Del Cauca</p>
+              <p>Vicerrectoría Administrativa</p>
+              <div className="telefono-wrapper">
+                <img src={Telefono} alt="TelIcon" width="14" height="14" />
+                <span>+57 (602) 8209900</span>
+              </div>
+            </div>
+          </Col>
+          {/* Columna 5 */}
+          <Col md={3} sm={6} className="columna left-align">
+            <div>
+              <p>Sistema De Contratación Y Seguimiento</p>
+              <p>
+                División De Las Tecnologías De La Información Y Comunicaciones
+              </p>
+              <p>Versión 1.0.0</p>
+            </div>
+          </Col>
+          {/* Columna 6 */}
+          <Col md={1} sm={1} className="columna">
+            <div>{/* Columna vacía */}</div>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <div className="footer-bottom text-center">
+              <p>
+                Institución con Acreditación de Alta Calidad por 8 años
+                resolución MEN 621B de 2019 - Vigilada MinEducación
+              </p>
+              <p>Comunícate con nuestro Soporte Técnico</p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
-export default Footer;
+export default MiFooter;

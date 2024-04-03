@@ -1,20 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types"; // Importa PropTypes para validar las props
+// IconButton.js
+
+//import React from "react";
+import PropTypes from "prop-types";
 import "../../Styles/Components/IconButton.css";
 
-const IconButton = ({ buttonText, iconSrc }) => {
+const IconButton = ({ buttonText, icon }) => {
   return (
-    <button className="btn">
+    <button className="btn btn-IconButton">
       {buttonText}
-      <img src={iconSrc} alt="Icono" className="icon" />
+      <span className="icon">{icon}</span>
     </button>
   );
 };
 
-// Define PropTypes para asegurarte de que se pasen las props correctamente
 IconButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
-  iconSrc: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired, // Asegúrate de que se pase un elemento React
 };
 
 export default IconButton;

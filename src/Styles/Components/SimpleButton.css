@@ -1,23 +1,28 @@
-/* IconButton.css */
+/* Button.css */
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 
-.btn {
+.btn-button {
   font-family: "Open Sans", sans-serif;
-  background: rgba(0, 0, 102, 1);
-  border-color: rgba(0, 0, 102, 1);
+  background: var(--blue);
   border-radius: 25px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: var(--white);
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
-  border-width: 2px;
-  border-style: solid;
+  border: 2px solid var(--blue);
   width: auto;
   height: auto;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-button:hover {
+  background-color: var(--white);
+  border-color: var(--blue);
+  color: var(--blue);
 }
