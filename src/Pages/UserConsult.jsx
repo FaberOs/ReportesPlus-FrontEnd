@@ -4,13 +4,14 @@ import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx";
 import ConsultForm from "../Components/Layout/ConsultForm";
 
+
 function UserConsult() {
   return (
     <div>
       <header>
         <Header />
       </header>
-      <main>
+      <main>        
         <ConsultForm />
       </main>
       <footer>
