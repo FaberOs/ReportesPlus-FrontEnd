@@ -1,12 +1,10 @@
-/* Button.css */
-
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+/* SimpleButton.css */
 
 .btn-button {
   font-family: "Open Sans", sans-serif;
   background: var(--blue);
   border-radius: 25px;
-  padding: 10px 20px;
+  padding: 10px 35px;
   display: flex;
   align-items: center;
   justify-content: center;

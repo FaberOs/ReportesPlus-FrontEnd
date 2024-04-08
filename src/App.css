@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+
 :root {
   --dark: #000000;
   --light-gray: #ededed;
@@ -5,6 +8,7 @@
   --dark-gray: #3c3c3b;
   --white: #ffffff;
   --blue: #000066;
+  --shadow: 10px 10px 25px 10px rgba(0, 0, 0, 0.1);
 }
 
 *::selection {
@@ -23,4 +27,12 @@
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--blue);
+}
+
+body.UserConsult {
+  background-color: var(--gray);
+}
+
+body.TablaConsulta {
+  background-color: var(--gray);
 }

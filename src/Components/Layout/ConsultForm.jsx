@@ -1,48 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../../Styles/Layout/ConsultForm.css"; // Importa el archivo CSS para los estilos personalizados
 
-import SimpleButton from "../UI/SimpleButton.jsx";
+import ModalButton from "../UI/ModalButton.jsx";
 
 import ImagenU from "../../Assets/ImagenU.png";
+
+import TextInput from "../UI/TextInput.jsx";
+import MonthPicker from "../UI/MonthPicker.jsx";
 
 const ConsultForm = () => {
   return (
     <div className="centered-container">
-      <div className="consult-form-container">
+      <div className="consultForm-container">
         {/* Parte izquierda */}
-        <div className="left-section">
+        <div className="consultForm-left-section">
           <img
             src={ImagenU} // Ruta de la imagen
             alt="Imagen"
-            className="imagen"
+            className="consultForm-imagen"
           />
         </div>
         {/* Parte derecha */}
-        <div className="right-section">
-          <h2 className="Titulo">Reportes Posgrado</h2>
+        <div className="consultForm-right-section">
+          <h2 className="consultForm-titulo">Reportes Posgrado</h2>
           <div className="datepicker-container">
-            <input
-              type="month"
-              id="start"
-              name="start"
-              min="2000-01"
-              max="2050-12"
-              className="datepicker"
-              placeholder="Selecciona la vigencia"
+            <MonthPicker
+              label="Vigencia"
+              placeholder="Seleccione la Vigencia"
             />
           </div>
-          <div className="codigo-input">
-            <input
-              type="text"
-              id="codigo"
-              className="input"
-              placeholder="Ingrese el codigo"
-            />
+          <div>
+            <TextInput label="Código" placeholder="Digite el Código" />
           </div>
-          <Link to="/consultar/consulta">
-            <SimpleButton buttonText="CONSULTAR" />
-          </Link>
+          <ModalButton buttonText="CONSULTAR" />
         </div>
       </div>
     </div>
