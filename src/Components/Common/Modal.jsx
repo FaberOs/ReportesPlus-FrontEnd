@@ -1,0 +1,52 @@
+import React from "react";
+import Modal from "react-bootstrap/Modal";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+import "../../Styles/Components/SimpleButton.css";
+import "../../Styles/Components/Modal.css";
+
+import SimpleButton from "../UI/SimpleButton.jsx";
+import IconInfo from "../../Assets/IconInfo.svg";
+
+const ConfirmModal = ({ show, handleClose, titulo, contenido }) => {
+  return (
+    <Modal
+      show={show}
+      onHide={handleClose}
+      backdrop="static"
+      keyboard={false}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      className="confirmModal"
+    >
+      <Modal.Body>
+        <div>
+          <div className="modalIcon">
+            <img className="advertenciaico" src={IconInfo} alt="advertencia" />
+          </div>
+          <div className="modalHeader">{titulo}</div>
+          <div className="modalBody">{contenido}</div>
+          <div className="modalFooter">
+            <SimpleButton buttonText="No" onClick={handleClose} />
+            <Link to="/consultar/consulta" style={{ textDecoration: "none" }}>
+              <SimpleButton buttonText="Sí" />
+            </Link>
+          </div>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+ConfirmModal.propTypes = {
+  titulo: PropTypes.string.isRequired,
+  contenido: PropTypes.string.isRequired,
+  show: PropTypes.func,
+  handleClose: PropTypes.func,
+};
+
+export default ConfirmModal;

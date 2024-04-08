@@ -6,7 +6,7 @@ import "../../Styles/Components/IconButton.css";
 
 const IconButton = ({ buttonText, icon }) => {
   return (
-    <button className="btn btn-IconButton">
+    <button className="btn-IconButton">
       {buttonText}
       <span className="icon">{icon}</span>
     </button>

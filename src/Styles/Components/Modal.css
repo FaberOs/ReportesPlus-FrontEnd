@@ -1,0 +1,40 @@
+.confirmModal {
+  font-family: "Open Sans", sans-serif;
+}
+
+.confirmModal .modal-content {
+  border-radius: 25px;
+  box-shadow: 10px 10px 25px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modalIcon {
+  margin-left: 5%;
+  margin-top: -9%;
+  height: 50px;
+  width: 50px;
+}
+
+.modalHeader {
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--blue);
+  margin-top: 2%;
+  margin-bottom: 4%;
+  margin-left: 5%;
+}
+.modalBody {
+  font-size: 16px;
+  color: var(--blue);
+  margin-bottom: 5%;
+  margin-left: 5%;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  margin-right: 20px; /* Ajusta el margen derecho */
+}
+
+.modalFooter button {
+  margin-left: 15px; /* Agrega margen entre los botones */
+}
