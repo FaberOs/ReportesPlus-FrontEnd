@@ -6,15 +6,14 @@ import Footer from "../Components/Layout/Footer.jsx";
 import ConsultForm from "../Components/Layout/ConsultForm";
 
 import TextInput from "../Components/UI/TextInput.jsx";
-import MonthPicker from "../Components/UI/MonthPicker.jsx";
 
-import ImagenU from "../Assets/ImagenU.png";
+import LoginPic from "../Assets/AdminLoginPic.png";
 
 function UserConsult() {
   const location = useLocation();
 
   useEffect(() => {
-    document.body.className = "UserConsult";
+    document.body.className = "Login";
   }, [location]);
 
   return (
@@ -24,15 +23,10 @@ function UserConsult() {
       </header>
       <main>
         <ConsultForm
-          imagen={ImagenU}
-          titulo="Reporte Posgrado"
-          TextInput1={
-            <MonthPicker
-              label="Vigencia"
-              placeholder="Selecciona la vigencia"
-            />
-          }
-          TextInput2={<TextInput label="Código" placeholder="Ej. 1432007" />}
+          imagen={LoginPic}
+          titulo="Inicio de Sesión"
+          TextInput1={<TextInput label="Usuario" placeholder="" />}
+          TextInput2={<TextInput label="Contraseña" placeholder="" />}
         />
       </main>
       <footer>

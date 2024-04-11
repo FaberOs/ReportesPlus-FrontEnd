@@ -18,7 +18,7 @@
   border: 2px solid var(--blue); /* Borde azul */
   border-radius: 25px; /* Borde redondeado */
   padding: 8px 12px; /* Espaciado interno */
-  width: 220px; /* Ancho completo */
+  width: 100%; /* Ancho completo */
 }
 
 .monthpicker:focus {

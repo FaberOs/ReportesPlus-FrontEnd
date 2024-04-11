@@ -1,4 +1,4 @@
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 
 function ResponsiveTable() {
   return (
@@ -6,7 +6,7 @@ function ResponsiveTable() {
       <thead>
         <tr>
           <th>#</th>
-          {Array.from({ length: 12 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <th key={index}>Table heading</th>
           ))}
         </tr>
@@ -14,25 +14,25 @@ function ResponsiveTable() {
       <tbody>
         <tr>
           <td>1</td>
-          {Array.from({ length: 12 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <td key={index}>Table cell {index}</td>
           ))}
         </tr>
         <tr>
           <td>2</td>
-          {Array.from({ length: 12 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <td key={index}>Table cell {index}</td>
           ))}
         </tr>
         <tr>
           <td>3</td>
-          {Array.from({ length: 12 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <td key={index}>Table cell {index}</td>
           ))}
         </tr>
         <tr>
           <td>4</td>
-          {Array.from({ length: 12 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <td key={index}>Table cell {index}</td>
           ))}
         </tr>

@@ -36,3 +36,7 @@ body.UserConsult {
 body.TablaConsulta {
   background-color: var(--gray);
 }
+
+body.Login {
+  background-color: var(--gray);
+}
