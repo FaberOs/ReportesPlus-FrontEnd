@@ -38,3 +38,12 @@
 .modalFooter button {
   margin-left: 15px; /* Agrega margen entre los botones */
 }
+
+@media screen and (max-width: 450px) {
+  .modalIcon {
+    margin-left: 5%;
+    margin-top: -11%;
+    height: 40px;
+    width: 40px;
+  }
+}

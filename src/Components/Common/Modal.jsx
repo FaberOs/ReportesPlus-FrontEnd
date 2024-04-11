@@ -18,7 +18,7 @@ const ConfirmModal = ({ show, handleClose, titulo, contenido }) => {
       show={show}
       onHide={handleClose}
       backdrop="static"
-      keyboard={false}
+      keyboard={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
       className="confirmModal"
