@@ -5,6 +5,8 @@
   padding: 10px 20px 10px 20px; /* Puedes ajustar esto según sea necesario */
   background-color: var(--white);
   box-shadow: var(--shadow); /* Añade la sombra solo abajo */
+  z-index: 2000;  /* posición en la pila de capas */
+  position: relative; /* posición normal (para z-index) /*
 }
 
 .logoU {

@@ -8,6 +8,8 @@ import ConsultForm from "../Components/Layout/ConsultForm";
 import TextInput from "../Components/UI/TextInput.jsx";
 import MonthPicker from "../Components/UI/MonthPicker.jsx";
 
+import Sidebar from "../Components/Layout/Sidebar2.jsx";
+
 import ImagenU from "../Assets/ImagenU.png";
 
 function UserConsult() {
@@ -23,6 +25,7 @@ function UserConsult() {
         <Header />
       </header>
       <main>
+        <Sidebar />
         <ConsultForm
           imagen={ImagenU}
           titulo="Reporte Posgrado"
