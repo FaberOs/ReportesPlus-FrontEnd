@@ -1,0 +1,15 @@
+/* ReportCard.css */
+.card-img-top {
+    margin-top: 10px;
+  }
+  
+  .card-title {
+    margin-top: 20px;
+  }
+  
+  .btn {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+  }

@@ -10,6 +10,8 @@ import MonthPicker from "../Components/UI/MonthPicker.jsx";
 
 import Sidebar from "../Components/Layout/Sidebar2.jsx";
 
+import Card from "../Components/Layout/Card.jsx"
+
 import ImagenU from "../Assets/ImagenU.png";
 
 function UserConsult() {
@@ -23,9 +25,11 @@ function UserConsult() {
     <div>
       <header>
         <Header />
+        <Sidebar />
       </header>
       <main>
-        <Sidebar />
+        
+        
         <ConsultForm
           imagen={ImagenU}
           titulo="Reporte Posgrado"

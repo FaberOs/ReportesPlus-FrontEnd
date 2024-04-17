@@ -1,0 +1,15 @@
+.option-container {
+   font-family: "Open Sans", sans-serif;
+   color: var(--dark); /* Color letra */
+   text-decoration: none; /* Quitar subrayado */
+}
+
+.sidebar-option:hover {
+     background-color: var(--gray);  /*Cambiar color al pasar el cursor sobre la opción del sidebar*/
+     border-top-left-radius: 10px; /* borde superior izquierdo */
+     border-bottom-left-radius: 10px; /* borde inferior izquierdo */
+     color: var(--dark); /* color */
+  } 
+  
+
+ 
