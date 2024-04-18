@@ -4,9 +4,10 @@ import "../../Styles/Layout/Footer.css"; // Archivo CSS para estilos personaliza
 
 import UInfo from "../../Assets/UInfo.svg";
 import GovInfo from "../../Assets/GovInfo.svg";
+import LogoIcontec from "../../Assets/LogoIcontec.svg";
 import Telefono from "../../Assets/Telefono.svg";
 
-const MiFooter = () => {
+const Footer = () => {
   return (
     <div className="main-footer">
       <Container>
@@ -16,13 +17,14 @@ const MiFooter = () => {
             <div>{/* Columna vacía */}</div>
           </Col>
           {/* Columna 2 */}
-          <Col md={3} sm={3} className="columna">
+          <Col md={4} sm={4} className="columna">
             <div className="universidad-info">
               <h4>Universidad del Cauca</h4>
               <p>NIT. 891500319-2</p>
               <div className="logos">
                 <img src={UInfo} alt="Logo 1" className="logo1" />
-                <img src={GovInfo} alt="Logo 2" className="logo2" />
+                <img src={LogoIcontec} alt="Logo 2" className="logo2" />
+                <img src={GovInfo} alt="Logo 3" className="logo3" />
               </div>
             </div>
           </Col>
@@ -72,4 +74,4 @@ const MiFooter = () => {
   );
 };
 
-export default MiFooter;
+export default Footer;

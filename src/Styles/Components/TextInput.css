@@ -1,0 +1,23 @@
+/* TextInput.css */
+
+.textInput-label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--blue); /* Color azul para el label */
+  margin-bottom: 10px; /* Espacio entre el label y el input */
+}
+
+.textInput {
+  font-family: "Open Sans", sans-serif; /* Fuente Open Sans */
+  color: var(--dark-gray); /* Color gris para el texto */
+  border: 2px solid var(--blue); /* Borde azul */
+  border-radius: 25px; /* Bordes redondos */
+  padding: 8px 12px; /* Espaciado interno */
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.textInput:focus {
+  outline: none; /* Elimina el contorno de enfoque */
+}

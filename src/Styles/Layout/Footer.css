@@ -1,3 +1,5 @@
+/* Footer.css */
+
 .main-footer {
   background-color: #f0f0f0;
   padding: 30px;
@@ -33,8 +35,12 @@
   width: auto;
 }
 
-.logos .logo1 {
-  margin-right: 20px;
+.logos .logo1,
+.logo2,
+.logo3 {
+  margin-right: 10px;
+  max-width: 100px; /* Tamaño máximo de las imágenes en pantallas pequeñas */
+  height: 50px; /* Altura automática */
 }
 
 .columna.left-align {
@@ -58,4 +64,68 @@
 .footer-bottom {
   font-size: 12px;
   margin-top: 20px;
+}
+
+/* Media Query para pantallas medianas */
+@media screen and (min-width: 576px) and (max-width: 1000px) {
+  .footer-row {
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan en pantallas medianas */
+  }
+
+  .columna {
+    flex: 1 1 50%; /* Ocupa el 50% del ancho en pantallas medianas */
+    margin-bottom: 20px; /* Agrega espacio entre las columnas */
+  }
+
+  .columna:nth-child(4) {
+    border-right: none; /* Elimina el separador para la columna 4 en pantallas medianas */
+  }
+
+  .logos {
+    display: flex;
+    flex-direction: column; /* Muestra los logos en columna en pantallas pequeñas */
+    align-items: left; /* Alinea los logos a la izquierda */
+  }
+}
+
+/* Media Query para pantallas pequeñas */
+@media screen and (max-width: 576px) {
+  .columna {
+    padding: 0; /* Elimina el relleno horizontal en pantallas pequeñas */
+  }
+
+  .columna h4 {
+    margin-top: 0; /* Elimina el margen superior para los títulos */
+  }
+
+  .columna:nth-child(4) {
+    border-right: none; /* Elimina el separador para la columna 4 en pantallas medianas */
+  }
+
+  .columna.left-align,
+  .columna.right-align {
+    text-align: left; /* Alinea el texto a la izquierda en pantallas pequeñas */
+  }
+
+  .telefno-wrapper {
+    justify-content: left; /* Alinea los elementos del wrapper a la izquierda en pantallas pequeñas */
+  }
+
+  .footer-bottom {
+    text-align: left; /* Alinea el texto del footer a la izquierda en pantallas pequeñas */
+  }
+
+  .logos {
+    display: flex;
+    flex-direction: column; /* Muestra los logos en columna en pantallas pequeñas */
+    align-items: left; /* Alinea los logos a la izquierda */
+  }
+
+  .logo1,
+  .logo2,
+  .logo3 {
+    margin: 10px;
+    max-width: 100px; /* Tamaño máximo de las imágenes en pantallas pequeñas */
+    height: auto; /* Altura automática */
+  }
 }

@@ -1,70 +1,52 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
-import '../../Styles/Components/ModalStyles.css';
-import SimpleButton from "../UI/SimpleButton.jsx";
+import PropTypes from "prop-types";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 import "../../Styles/Components/SimpleButton.css";
-import advertenciaico from "../../Assets/advertencia.png";
+import "../../Styles/Components/Modal.css";
 
-const ModalGeneric = ({show, handleClose})  =>{
-    //<Modal.Header >
-    //      <Modal.Title>Usuarios</Modal.Title>
-    //</Modal.Header>
-    //<Modal.Footer>
-    //</Modal.Footer>
-    /*<Button type="button" className="btn btn-button" onClick={handleClose}>
-                        No
-                    </Button>
-                    <Link to="/consultar/consulta">
-                        <Button type="button" className="btn btn-button " onClick={handleClose} >
-                            Si
-                        </Button>
-                    </Link>
+import SimpleButton from "../UI/SimpleButton.jsx";
+import IconInfo from "../../Assets/IconInfo.svg";
 
-
-                    <SimpleButton buttonText="No"  onClick={handleClose}/>
-                    <Link to="/consultar/consulta">
-                        <SimpleButton buttonText="Si"  />
-                    </Link>
-*/
-
-    
-    return (
-    <Modal  show={show} 
-    onHide={handleClose} 
-    backdrop="static"
-    keyboard={false}
-    aria-labelledby="contained-modal-title-vcenter"
-    centered
+const ConfirmModal = ({ show, handleClose, titulo, contenido }) => {
+  return (
+    <Modal
+      show={show}
+      onHide={handleClose}
+      backdrop="static"
+      keyboard={true}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      className="confirmModal"
     >
-        <Modal.Body  >
-            <div>
-                <div className="Modal-icon">
-                    <img className="advertenciaico" src={advertenciaico} alt="advertencia" width="90" height="90"/>
-                </div>
-                <div className="Modal-header1">
-                    Usuarios
-                </div>
-                <div className="modal-body1">
-                    seguro desea generar el usuario?
-                </div>
-                <div className="modal-footer1">
-                    <Button type="button" className="btn btn-button" onClick={handleClose}>
-                        No
-                    </Button>
-                    <Link to="/consultar/consulta">
-                        <Button type="button" className="btn btn-button " onClick={handleClose} >
-                            Si
-                        </Button>
-                    </Link>
-                </div>
-            </div>            
-        </Modal.Body>
+      <Modal.Body>
+        <div>
+          <div className="modalIcon">
+            <img className="advertenciaico" src={IconInfo} alt="advertencia" />
+          </div>
+          <div className="modalHeader">{titulo}</div>
+          <div className="modalBody">{contenido}</div>
+          <div className="modalFooter">
+            <SimpleButton buttonText="No" onClick={handleClose} />
+            <Link to="/consultar/consulta" style={{ textDecoration: "none" }}>
+              <SimpleButton buttonText="Sí" />
+            </Link>
+          </div>
+        </div>
+      </Modal.Body>
     </Modal>
-    );
+  );
+};
 
-}
-export default ModalGeneric;
+ConfirmModal.propTypes = {
+  titulo: PropTypes.string.isRequired,
+  contenido: PropTypes.string.isRequired,
+  show: PropTypes.func,
+  handleClose: PropTypes.func,
+};
+
+export default ConfirmModal;

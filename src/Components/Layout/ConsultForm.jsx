@@ -1,54 +1,38 @@
-import React, { useState } from 'react';
+import React from "react";
 import "../../Styles/Layout/ConsultForm.css"; // Importa el archivo CSS para los estilos personalizados
+import PropTypes from "prop-types"; // Importa PropTypes para validar las props
 
-import SimpleButton from "../UI/SimpleButton.jsx";
-import ImagenU from "../../Assets/ImagenU.png";
+import ModalButton from "../UI/ModalButton.jsx";
 
-
-const ConsultForm = () => {  
-
+const ConsultForm = ({ imagen, titulo, TextInput1, TextInput2 }) => {
   return (
-    <>
-      <div className="centered-container">
-        <div className="consult-form-container">
-          {/* Parte izquierda */}
-          <div className="left-section">
-            <img
-              src={ImagenU} // Ruta de la imagen
-              alt="Imagen"
-              className="imagen"
-            />
-          </div>
-          {/* Parte derecha */}
-          <div className="right-section">
-            <h2 className="Titulo">Reportes Posgrado</h2>
-            <div className="datepicker-container">
-              <input
-                type="month"
-                id="start"
-                name="start"
-                min="2000-01"
-                max="2050-12"
-                className="datepicker"
-                placeholder="Selecciona la vigencia"
-              />
-            </div>
-            <div className="codigo-input">
-              <input
-                type="text"
-                id="codigo"
-                className="input"
-                placeholder="Ingrese el codigo"
-              />
-            </div>
-              <SimpleButton buttonText="CONSULTAR"  />
-          </div>
+    <div className="centered-container">
+      <div className="consultForm-container">
+        {/* Parte izquierda */}
+        <div className="consultForm-left-section">
+          <img
+            src={imagen} // Ruta de la imagen
+            alt="Imagen"
+            className="consultForm-imagen"
+          />
+        </div>
+        {/* Parte derecha */}
+        <div className="consultForm-right-section">
+          <h2 className="consultForm-titulo">{titulo}</h2>
+          <div className="datepicker-container">{TextInput1}</div>
+          <div>{TextInput2}</div>
+          <ModalButton buttonText="CONSULTAR" />
         </div>
       </div>
-      
-    </>
-    
+    </div>
   );
+};
+
+ConsultForm.propTypes = {
+  titulo: PropTypes.string.isRequired,
+  imagen: PropTypes.string.isRequired,
+  TextInput1: PropTypes.elementType.isRequired,
+  TextInput2: PropTypes.elementType.isRequired,
 };
 
 export default ConsultForm;
