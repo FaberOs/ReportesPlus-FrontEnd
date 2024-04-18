@@ -41,7 +41,6 @@ function ResponsiveTable({data, lista}){
 					</tr>
 				</thead>
 				<tbody>
-          
 					{data}
 				</tbody>
 			</Table>

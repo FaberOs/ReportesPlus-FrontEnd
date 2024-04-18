@@ -1,8 +1,7 @@
 //import React from 'react';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Styles/Layout/StyleTabla.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,10 +19,34 @@ const Tableinfo = () => {
 
    // titulos de las columnas
   const lista3 = ['idsss','nameddd','cityfff',"dirreciongg"];
-  const lista0 = ['num','tipo documento','numero documento',"fecha","cuenta movimiento","observacion","valor definitivo","valor registro","valor ejecutado","valor pagado","saldo","estado","id"];
+
+  const DisplayData=JsonData.map(
+		(info)=>{
+			return(
+				<tr>
+					<td>{info.id}</td>
+					<td>{info.name}</td>
+					<td>{info.city}</td>
+          <td>{info.dirreccion}</td>
+          <td>{info.dirreccion}</td>
+          <td>{info.dirreccion}</td>
+          <td>{info.dirreccion}</td>
+          <td>{info.dirreccion}</td>
+          <td>{info.dirreccion}</td>
+          <td>{info.dirreccion}</td>
+				</tr>
+			)
+		}
+	)
+
+  //titulos de la tabla
+  //const lista0 = ['num','tipo documento','numero documento',"fecha","cuenta movimiento","observacion","valor definitivo","valor registro","valor ejecutado","valor pagado","saldo","estado","id"];
+
+  
+/*
+  ///como trabajar la informacion del axios
 
   const [movimientos, setMovimientos] = useState([]);
-
   useEffect(() => {
       axios.get('http://localhost:8080/api/v1/posgrados/report/')
           .then(response => {
@@ -59,7 +82,7 @@ const Tableinfo = () => {
 			)
 		}
 	)
-
+*/
   return (
     <div>
       <Row>
@@ -84,7 +107,7 @@ const Tableinfo = () => {
               <h1>RELACIÓN DE RECAUDOS NETOS MENOS CERTIFICADOS</h1>
             </div>
             <div>
-              <ResponsiveTable  data={DisplayData} lista={lista0}/>
+              <ResponsiveTable  data={DisplayData} lista={lista3}/>
             </div>
           </div>
         </Col>
