@@ -1,6 +1,6 @@
 .custom-header {
-  position: fixed; /* Fija el encabezado en su posición */
-  top: 0; /* Lo posiciona en la parte superior de la ventana */
+  /*position: fixed;  Fija el encabezado en su posición */
+  /*top: 0;  Lo posiciona en la parte superior de la ventana */
   width: 100%; /* Ocupa todo el ancho de la ventana */
 
   display: flex;
@@ -8,6 +8,7 @@
   align-items: center; /* Centra verticalmente los elementos */
   padding: 10px 20px; /* Relleno */
   background-color: var(--white); /* color fondo */
+
   box-shadow: var(--shadow); /* Añade la sombra solo abajo */
   z-index: 2000; /* posición en la pila de capas */
 }

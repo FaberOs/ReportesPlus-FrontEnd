@@ -28,8 +28,6 @@ function UserConsult() {
         <Sidebar />
       </header>
       <main>
-        
-        
         <ConsultForm
           imagen={ImagenU}
           titulo="Reporte Posgrado"
