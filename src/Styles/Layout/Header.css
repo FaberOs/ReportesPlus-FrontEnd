@@ -1,4 +1,6 @@
 .custom-header {
+  width: 100%; /* Ocupa todo el ancho de la ventana */
+  /* position: fixed; */
   display: flex;
   justify-content: space-between; /* Coloca los elementos a cada extremo */
   align-items: center; /* Centra verticalmente los elementos */

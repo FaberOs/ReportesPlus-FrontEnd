@@ -1,4 +1,5 @@
-.contenedorTitulo,
+/* Tablas */
+
 .contenedor,
 .contenedor-Small {
   margin-top: 20px;
@@ -9,38 +10,36 @@
   box-shadow: var(--shadow);
 }
 
-.contenedorTitulo {
-  padding: 20px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between; /* Coloca los elementos a cada extremo */
-  align-items: center;
-}
-
 .contenedor {
   display: flex;
   width: 100%;
-  justify-content: space-between; /* Coloca los elementos a cada extremo */
   align-items: center; /* Centra verticalmente los elementos */
 }
 
-.contenedorTitulo h1 {
-  margin: 10px;
-  font-size: 20px;
-  color: var(--blue);
-  font-weight: bold;
-}
-
 .contenedor-Small {
-  margin-left: 50%;
   margin-bottom: 30px;
-  width: 50%;
   align-items: center;
 }
 
 .contenedor-Small h1 {
   margin: 10px;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--blue);
   font-weight: bold;
+}
+
+/* ControlledTabs */
+
+/* Estilos para los tabs no seleccionados */
+.nav-tabs .nav-link {
+  color: var(--dark);
+  background-color: var(--light-gray);
+  border-color: var(--gray);
+}
+
+/* Estilos para los tabs seleccionados */
+.nav-tabs .nav-link.active {
+  color: var(--white);
+  background-color: var(--blue);
+  border-color: var(--dark);
 }

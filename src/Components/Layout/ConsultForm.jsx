@@ -1,27 +1,31 @@
-import React from "react";
-import "../../Styles/Layout/ConsultForm.css"; // Importa el archivo CSS para los estilos personalizados
-import PropTypes from "prop-types"; // Importa PropTypes para validar las props
+//import React from "react";
+import PropTypes from "prop-types";
+import "../../Styles/Layout/ConsultForm.css";
 
-import ModalButton from "../UI/ModalButton.jsx";
-
-const ConsultForm = ({ imagen, titulo, TextInput1, TextInput2 }) => {
+const ConsultForm = ({ imagen, titulo, input1, input2, boton }) => {
   return (
-    <div className="centered-container">
-      <div className="consultForm-container">
-        {/* Parte izquierda */}
-        <div className="consultForm-left-section">
-          <img
-            src={imagen} // Ruta de la imagen
-            alt="Imagen"
-            className="consultForm-imagen"
-          />
-        </div>
-        {/* Parte derecha */}
-        <div className="consultForm-right-section">
-          <h2 className="consultForm-titulo">{titulo}</h2>
-          <div className="datepicker-container">{TextInput1}</div>
-          <div>{TextInput2}</div>
-          <ModalButton buttonText="CONSULTAR" />
+    <div className="container-fluid d-flex align-items-center justify-content-center mt-5 mb-5">
+      <div className="row">
+        <div className="col-12">
+          <div className="consultForm-container p-3">
+            <div className="row">
+              <div className="col-md-6">
+                <img
+                  src={imagen}
+                  alt="Imagen"
+                  className="consultForm-imagen img-fluid"
+                />
+              </div>
+              <div className="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                <div className="text-center mt-4">
+                  <h2 className="consultForm-titulo">{titulo}</h2>
+                </div>
+                <div className="mb-1">{input1}</div>
+                <div className="mb-1">{input2}</div>
+                <div className="text-center mb-4">{boton}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -31,8 +35,9 @@ const ConsultForm = ({ imagen, titulo, TextInput1, TextInput2 }) => {
 ConsultForm.propTypes = {
   titulo: PropTypes.string.isRequired,
   imagen: PropTypes.string.isRequired,
-  TextInput1: PropTypes.elementType.isRequired,
-  TextInput2: PropTypes.elementType.isRequired,
+  input1: PropTypes.elementType.isRequired,
+  input2: PropTypes.elementType.isRequired,
+  boton: PropTypes.elementType.isRequired,
 };
 
 export default ConsultForm;

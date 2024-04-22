@@ -17,7 +17,7 @@ const Footer = () => {
             <div>{/* Columna vacía */}</div>
           </Col>
           {/* Columna 2 */}
-          <Col md={4} sm={4} className="columna">
+          <Col md={3} sm={4} className="columna">
             <div className="universidad-info">
               <h4>Universidad del Cauca</h4>
               <p>NIT. 891500319-2</p>
@@ -37,16 +37,14 @@ const Footer = () => {
             <div>
               <p>Universidad Del Cauca</p>
               <p>Vicerrectoría Administrativa</p>
-              <div className="telefono-wrapper">
-                <img src={Telefono} alt="TelIcon" width="14" height="14" />
-                <span>+57 (602) 8209900</span>
-              </div>
+              <img src={Telefono} alt="TelIcon" width="14" height="14" />
+              <span>+57 (602) 8209900</span>
             </div>
           </Col>
           {/* Columna 5 */}
-          <Col md={3} sm={6} className="columna left-align">
+          <Col md={4} sm={6} className="columna left-align">
             <div>
-              <p>Sistema De Contratación Y Seguimiento</p>
+              <p>Sistema De Reportes</p>
               <p>
                 División De Las Tecnologías De La Información Y Comunicaciones
               </p>
