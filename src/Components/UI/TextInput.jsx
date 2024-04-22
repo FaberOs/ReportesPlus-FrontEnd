@@ -1,4 +1,4 @@
-import React from "react";
+//import React from "react";
 import PropTypes from "prop-types"; // Importa PropTypes para validar las props
 import "../../Styles/Components/TextInput.css";
 
@@ -6,12 +6,7 @@ const TextInput = ({ label, placeholder }) => {
   return (
     <div>
       <h4 className="textInput-label">{label}</h4>
-      <input
-        type="text"
-        id="codigo"
-        className="form-control textInput"
-        placeholder={placeholder}
-      />
+      <input type="text" className="textInput" placeholder={placeholder} />
     </div>
   );
 };
