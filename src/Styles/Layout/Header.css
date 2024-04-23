@@ -1,12 +1,15 @@
 .custom-header {
-  width: 100%; /* Ocupa todo el ancho de la ventana */
-  /* position: fixed; */
+  position: fixed; /* fijar posición */
+  top: 0; /* ajustar la posición desde la parte superior */
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+
   display: flex;
   justify-content: space-between; /* Coloca los elementos a cada extremo */
   align-items: center; /* Centra verticalmente los elementos */
   padding: 10px 20px 10px 20px; /* Puedes ajustar esto según sea necesario */
   background-color: var(--white);
   box-shadow: var(--shadow); /* Añade la sombra solo abajo */
+  z-index: 2000; /* posición en la pila de capas (menor al header) */
 }
 
 .logoU {

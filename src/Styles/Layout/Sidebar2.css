@@ -1,0 +1,50 @@
+.sidebar-custom {   
+   position: fixed; /* fijar posición */
+   height: 100vh; /* todo el alto de la pantalla */
+   top: 0; /* ajustar la posición desde la parte superior */
+   left: 0; /* ajustar la posición desde el lado izquierdo */
+   z-index: 1000; /* posición en la pila de capas (menor al header) */
+   padding-top: 100px; /* altura predeterminada desde la parte superior (mostrar primer icono) */
+   transition: 0.7s; /* tiempo transición al expandir */
+ }
+ 
+.option-container {
+   font-family: "Open Sans", sans-serif;
+   color: var(--dark); /* Color letra */
+   text-decoration: none; /* Quitar subrayado */
+   
+   width: 100%;
+   height: 10%;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+.sidebar-option {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   margin-left: 10%;
+}
+
+.sidebar-option:hover {
+   background-color: var(--gray); /*Cambiar color al pasar el cursor sobre la opción del sidebar*/
+   border-top-left-radius: 10px; /* borde superior izquierdo */
+   border-bottom-left-radius: 10px; /* borde inferior izquierdo */
+   color: var(--dark); /* color */
+}
+
+.custom-image {
+   width: 25px; /* tamaño icono */
+   height: 25px; 
+   margin-left: 15px; /* margen a la izq. */
+}
+
+.custom-label{
+   margin-left: 15px; /* margen a la izq. */
+   /* lógica para la fluides del texto al desplegarse */
+   overflow: hidden; /* ocultar */
+   text-overflow: ellipsis;
+   white-space: nowrap
+}
