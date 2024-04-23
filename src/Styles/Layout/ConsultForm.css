@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding-top: 2.3%; /* Margen superior del contenido (espacio header)*/
 }
 
 .consultForm-container {
@@ -82,6 +83,8 @@
   .centered-container {
     margin: 20px; /* Elimina el margen en Surface Duo */
     height: auto; /* Altura automática */
+
+    padding-top: 86px; /* Margen superior del contenido (espacio header)*/
   }
 
   .consultForm-container {

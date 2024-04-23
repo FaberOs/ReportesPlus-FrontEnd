@@ -1,11 +1,11 @@
-.sidebar-custom {
+.sidebar-custom {   
+   position: fixed; /* fijar posición */
    height: 100vh; /* todo el alto de la pantalla */
-   /* position: fixed; fijar posición */
    top: 0; /* ajustar la posición desde la parte superior */
    left: 0; /* ajustar la posición desde el lado izquierdo */
    z-index: 1000; /* posición en la pila de capas (menor al header) */
    padding-top: 100px; /* altura predeterminada desde la parte superior (mostrar primer icono) */
-   transition: width 0.7s; /* tiempo transición al expandir */
+   transition: 0.7s; /* tiempo transición al expandir */
  }
  
 .option-container {

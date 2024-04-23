@@ -1,16 +1,15 @@
 .custom-header {
-  /*position: fixed;  Fija el encabezado en su posición */
-  /*top: 0;  Lo posiciona en la parte superior de la ventana */
-  width: 100%; /* Ocupa todo el ancho de la ventana */
+  position: fixed; /* fijar posición */
+  top: 0; /* ajustar la posición desde la parte superior */
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
 
   display: flex;
   justify-content: space-between; /* Coloca los elementos a cada extremo */
   align-items: center; /* Centra verticalmente los elementos */
-  padding: 10px 20px; /* Relleno */
-  background-color: var(--white); /* color fondo */
-
+  padding: 10px 20px 10px 20px; /* Puedes ajustar esto según sea necesario */
+  background-color: var(--white);
   box-shadow: var(--shadow); /* Añade la sombra solo abajo */
-  z-index: 2000; /* posición en la pila de capas */
+  z-index: 2000; /* posición en la pila de capas (menor al header) */
 }
 
 .logoU {
