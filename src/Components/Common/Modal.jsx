@@ -1,4 +1,4 @@
-import React from "react";
+//import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -12,7 +12,13 @@ import "../../Styles/Components/Modal.css";
 import SimpleButton from "../UI/SimpleButton.jsx";
 import IconInfo from "../../Assets/IconInfo.svg";
 
-const ConfirmModal = ({ show, handleClose, titulo, contenido }) => {
+const ModalGeneric = ({
+  show,
+  handleClose,
+  titulo,
+  contenido,
+  rutaConfirmacion,
+}) => {
   return (
     <Modal
       show={show}
@@ -32,7 +38,7 @@ const ConfirmModal = ({ show, handleClose, titulo, contenido }) => {
           <div className="modalBody">{contenido}</div>
           <div className="modalFooter">
             <SimpleButton buttonText="No" onClick={handleClose} />
-            <Link to="/consultar/consulta" style={{ textDecoration: "none" }}>
+            <Link to={rutaConfirmacion} style={{ textDecoration: "none" }}>
               <SimpleButton buttonText="Sí" />
             </Link>
           </div>
@@ -42,11 +48,12 @@ const ConfirmModal = ({ show, handleClose, titulo, contenido }) => {
   );
 };
 
-ConfirmModal.propTypes = {
+ModalGeneric.propTypes = {
   titulo: PropTypes.string.isRequired,
   contenido: PropTypes.string.isRequired,
+  rutaConfirmacion: PropTypes.string.isRequired,
   show: PropTypes.func,
   handleClose: PropTypes.func,
 };
 
-export default ConfirmModal;
+export default ModalGeneric;

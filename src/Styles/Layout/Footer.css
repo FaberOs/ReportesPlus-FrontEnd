@@ -13,12 +13,12 @@
 }
 
 .columna {
-  font-size: 14px;
+  font-size: 12px;
   padding: 0 15px;
 }
 
 .columna h4 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -53,12 +53,6 @@
 
 .columna:nth-child(4) {
   border-right: 2px solid #ccc; /* Separador gris solo para la columna 4 */
-}
-
-.telefono-wrapper {
-  display: flex;
-  align-items: right;
-  gap: 5px;
 }
 
 .footer-bottom {

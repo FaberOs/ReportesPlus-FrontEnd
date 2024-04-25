@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import Header from "../Components/Layout/Header.jsx";
@@ -7,6 +7,7 @@ import ConsultForm from "../Components/Layout/ConsultForm";
 
 import TextInput from "../Components/UI/TextInput.jsx";
 import MonthPicker from "../Components/UI/MonthPicker.jsx";
+import ModalButton from "../Components/UI/ModalButton.jsx";
 
 import ImagenU from "../Assets/ImagenU.png";
 
@@ -26,13 +27,21 @@ function UserConsult() {
         <ConsultForm
           imagen={ImagenU}
           titulo="Reporte Posgrado"
-          TextInput1={
+          input1={
             <MonthPicker
               label="Vigencia"
               placeholder="Selecciona la vigencia"
             />
           }
-          TextInput2={<TextInput label="Código" placeholder="Ej. 1432007" />}
+          input2={<TextInput label="Código" placeholder="Ej. 1432007" />}
+          boton={
+            <ModalButton
+              buttonText="CONSULTAR"
+              tituloModal="Confirmación"
+              contenidoModal="Desea generar la consulta para Reportes Posgrado?"
+              rutaModal="/consultar/consulta"
+            />
+          }
         />
       </main>
       <footer>

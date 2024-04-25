@@ -1,0 +1,53 @@
+/* ResponsiveTable.css */
+
+/* Establece un tamaño de fuente personalizado para la tabla y las celdas */
+.table {
+  font-size: 12px;
+}
+
+.table th,
+.table td {
+  padding: 8px; /* Espaciado interno */
+  max-width: 200px; /* Establece un ancho máximo para las celdas */
+  overflow: hidden; /* Oculta el desbordamiento */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+/* Estilos de paginación */
+.pagination {
+  margin-top: 10px; /* Espacio superior */
+  margin-bottom: 10px;
+  display: flex; /* Alinea los elementos en línea */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.pagination .page-link {
+  background-color: var(--white);
+  color: var(--dark); /* Color del enlace */
+  border-color: var(--dark); /* Color del borde */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--blue); /* Fondo del enlace activo */
+  color: var(--white);
+  border-color: var(--dark); /* Color del borde del enlace activo */
+}
+
+.pagination .page-link:hover {
+  background-color: var(--blue); /* Cambia el fondo al pasar el cursor */
+  color: var(--white); /* Cambia el color del texto al pasar el cursor */
+}
+
+/* Establece anchos fijos para cada columna */
+/* .table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 40px; 
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  width: 50px; 
+} */
+
+/* Agrega estilos adicionales según sea necesario */
