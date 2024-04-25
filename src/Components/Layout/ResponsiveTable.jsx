@@ -16,8 +16,10 @@ function ResponsiveTable() {
                 setMovimientos([]);
             });
 
-            console.log("respuesta :", movimientos);
+           
     }, []);
+
+    console.log("respuesta :", movimientos);
 
     return (
         <Table responsive bordered hover>
