@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types"; // Importa PropTypes para validar las props
 import "../../Styles/Components/SimpleButton.css";
 
+import ToastNotify from "../Common/ToastNotify.jsx";
 import ModalGeneric from "../Common/Modal.jsx";
 
 const ModalButton = ({
@@ -18,8 +19,9 @@ const ModalButton = ({
   return (
     <>
       <button className="btn-button" type="submit" onClick={handleShow}>
-        {buttonText}
+        {buttonText}        
       </button>
+      <ToastNotify accionar={true} tipo='E'/> 
       <ModalGeneric
         show={show}
         handleClose={handleClose}

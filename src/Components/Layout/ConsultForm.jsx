@@ -1,6 +1,7 @@
 //import React from "react";
 import PropTypes from "prop-types";
 import "../../Styles/Layout/ConsultForm.css";
+import ToastNotify from "../../Components/Common/ToastNotify.jsx";
 
 const ConsultForm = ({ imagen, titulo, input1, input2, boton }) => {
   return (
@@ -23,6 +24,7 @@ const ConsultForm = ({ imagen, titulo, input1, input2, boton }) => {
                 <div className="mb-1">{input1}</div>
                 <div className="mb-1">{input2}</div>
                 <div className="text-center mb-4">{boton}</div>
+                
               </div>
             </div>
           </div>

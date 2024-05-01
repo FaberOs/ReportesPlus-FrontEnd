@@ -20,6 +20,7 @@ const Header = () => {
       <div className="logo-container">
         <a href="/">
           <img className="logoU" src={logoU} alt="logoUnicauca" />
+          
         </a>
       </div>
       <div className="icon-container">

@@ -8,6 +8,7 @@ import ConsultForm from "../Components/Layout/ConsultForm";
 import TextInput from "../Components/UI/TextInput.jsx";
 import MonthPicker from "../Components/UI/MonthPicker.jsx";
 import ModalButton from "../Components/UI/ModalButton.jsx";
+import ToastNotify from "../Components/Common/ToastNotify.jsx";
 
 import ImagenU from "../Assets/ImagenU.png";
 
@@ -41,8 +42,10 @@ function UserConsult() {
               contenidoModal="Desea generar la consulta para Reportes Posgrado?"
               rutaModal="/consultar/consulta"
             />
+            
           }
         />
+               
       </main>
       <footer>
         <Footer />
