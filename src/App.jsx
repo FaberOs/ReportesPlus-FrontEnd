@@ -1,33 +1,28 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 import UserConsult from "./Pages/UserConsult";
 import TablaConsulta from "./Pages/TablaConsulta";
 import Login from "./Pages/Login";
 
 import AdminPos from "./Pages/AdminPos";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/consultar" element={<UserConsult />} />
-          <Route path="/consultar/consulta" element={<TablaConsulta />} />
-          <Route path="/admin/dashboard" element={<AdminPos />} />
-          <Route path="/admin/posgrados" element={<AdminPos />} />
-          <Route path="/admin/pregrados" element={<AdminPos />} />
-        </Routes>
-      </Router>
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/consultar" element={<UserConsult />} />
+        <Route path="/consultar/consulta" element={<TablaConsulta />} />
+        <Route path="/admin/dashboard" element={<AdminPos />} />
+        <Route path="/admin/posgrados" element={<AdminPos />} />
+        <Route path="/admin/pregrados" element={<AdminPos />} />
+      </Routes>
     </>
   );
 }

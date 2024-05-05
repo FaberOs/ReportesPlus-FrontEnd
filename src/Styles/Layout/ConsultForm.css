@@ -2,7 +2,7 @@
 
 .consultForm-container {
   font-family: "Open Sans", sans-serif;
-  background-color: var(--white);
+  background-color: var(--white-content);
   padding: 10px;
   border-radius: 20px;
   box-shadow: var(--shadow);
@@ -10,8 +10,8 @@
 
 .consultForm-imagen {
   width: 100%;
-  max-width: 100%; /* Para evitar que la imagen se estire más allá de su contenedor */
-  height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 
@@ -19,4 +19,14 @@
   margin-bottom: 20px;
   font-weight: bold;
   color: var(--blue);
+}
+
+/* DARK THEME */
+
+.dark-text .consultForm-titulo {
+  color: var(--white); /* Color blanco en tema oscuro */
+}
+
+.dark-theme .consultForm-container {
+  background-color: var(--dark-light-gray);
 }

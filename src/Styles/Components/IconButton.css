@@ -33,3 +33,19 @@
 .btn-IconButton:hover .icon svg path {
   fill: #000066;
 }
+
+.dark-IconButton {
+  background: var(--light-blue);
+  border-color: var(--light-blue);
+  color: var(--white);
+}
+
+.dark-IconButton:hover {
+  background-color: var(--white-interact);
+  border-color: var(--white-interact);
+  color: var(--blue);
+}
+
+.dark-IconButton:hover .dark-Icon svg path {
+  fill: #000066;
+}

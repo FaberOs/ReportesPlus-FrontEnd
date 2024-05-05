@@ -1,16 +1,13 @@
-//import React from "react";
+// ModalGeneric.jsx
+
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
-import "../../Styles/Components/SimpleButton.css";
 import "../../Styles/Components/Modal.css";
 
 import SimpleButton from "../UI/SimpleButton.jsx";
 import IconInfo from "../../Assets/IconInfo.svg";
+import { useThemeContext } from "../../ThemeContext.jsx";
 
 const ModalGeneric = ({
   show,
@@ -19,6 +16,9 @@ const ModalGeneric = ({
   contenido,
   rutaConfirmacion,
 }) => {
+  const { contextTheme } = useThemeContext();
+  const isDarkTheme = contextTheme === "Dark";
+
   return (
     <Modal
       show={show}
@@ -27,19 +27,27 @@ const ModalGeneric = ({
       keyboard={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      className="confirmModal"
+      className={`confirmModal ${isDarkTheme ? "dark-theme" : ""}`}
     >
       <Modal.Body>
         <div>
           <div className="modalIcon">
             <img className="advertenciaico" src={IconInfo} alt="advertencia" />
           </div>
-          <div className="modalHeader">{titulo}</div>
-          <div className="modalBody">{contenido}</div>
+          <div className={`modalHeader ${isDarkTheme ? "dark-text" : ""}`}>
+            {titulo}
+          </div>
+          <div className={`modalBody ${isDarkTheme ? "dark-text" : ""}`}>
+            {contenido}
+          </div>
           <div className="modalFooter">
-            <SimpleButton buttonText="No" onClick={handleClose} />
+            <SimpleButton
+              buttonText="No"
+              onClick={handleClose}
+              darkTheme={isDarkTheme}
+            />
             <Link to={rutaConfirmacion} style={{ textDecoration: "none" }}>
-              <SimpleButton buttonText="Sí" />
+              <SimpleButton buttonText="Sí" darkTheme={isDarkTheme} />
             </Link>
           </div>
         </div>

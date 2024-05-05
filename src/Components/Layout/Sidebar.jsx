@@ -35,13 +35,13 @@ const Sidebar = () => {
         expanded={expanded}
       />
       <SidebarOption
-        to="/consultar/consulta"
+        to="/consultar"
         icon={FileSearchIcon}
         label="Consultar"
         expanded={expanded}
       />
       <SidebarOption
-        to="/pregrado"
+        to="/admin/pregrados"
         icon={CollegeIcon}
         label="Pregrado"
         expanded={expanded}

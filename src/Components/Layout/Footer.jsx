@@ -1,25 +1,27 @@
-//import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import "../../Styles/Layout/Footer.css"; // Archivo CSS para estilos personalizados
+// Footer.jsx
 
+import { Container, Row, Col } from "react-bootstrap";
+import "../../Styles/Layout/Footer.css";
 import UInfo from "../../Assets/UInfo.svg";
 import GovInfo from "../../Assets/GovInfo.svg";
 import LogoIcontec from "../../Assets/LogoIcontec.svg";
 import Telefono from "../../Assets/Telefono.svg";
+import { useThemeContext } from "../../ThemeContext";
 
 const Footer = () => {
+  const { contextTheme } = useThemeContext();
+  const isDarkTheme = contextTheme === "Dark";
+
   return (
-    <div className="main-footer">
+    <div className={`main-footer ${isDarkTheme ? "dark-footer" : ""}`}>
       <Container>
         <Row className="footer-row">
-          {/* Columna 1 */}
           <Col md={1} sm={1} className="columna">
-            <div>{/* Columna vacía */}</div>
+            <div />
           </Col>
-          {/* Columna 2 */}
           <Col md={3} sm={4} className="columna">
             <div className="universidad-info">
-              <h4>Universidad del Cauca</h4>
+              <h2>Universidad del Cauca</h2>
               <p>NIT. 891500319-2</p>
               <div className="logos">
                 <img src={UInfo} alt="Logo 1" className="logo1" />
@@ -28,11 +30,9 @@ const Footer = () => {
               </div>
             </div>
           </Col>
-          {/* Columna 3 */}
           <Col md={1} sm={1} className="columna">
-            <div>{/* Columna vacía */}</div>
+            <div />
           </Col>
-          {/* Columna 4 */}
           <Col md={2} sm={6} className="columna right-align">
             <div>
               <p>Universidad Del Cauca</p>
@@ -41,7 +41,6 @@ const Footer = () => {
               <span>+57 (602) 8209900</span>
             </div>
           </Col>
-          {/* Columna 5 */}
           <Col md={4} sm={6} className="columna left-align">
             <div>
               <p>Sistema De Reportes</p>
@@ -51,9 +50,8 @@ const Footer = () => {
               <p>Versión 1.0.0</p>
             </div>
           </Col>
-          {/* Columna 6 */}
           <Col md={1} sm={1} className="columna">
-            <div>{/* Columna vacía */}</div>
+            <div />
           </Col>
         </Row>
         <Row>

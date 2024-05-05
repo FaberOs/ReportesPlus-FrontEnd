@@ -1,0 +1,54 @@
+.card-container {
+  /* box-shadow: var(--shadow); */
+
+  box-shadow: var(--shadow);
+  border-radius: 25px;
+  border: none;
+}
+
+.card-container-imagen {
+  background-color: var(--blue);
+  /* width: 100%; */
+  max-width: 100%; /* Para evitar que la imagen se estire más allá de su contenedor */
+  height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
+}
+
+.card-imagen {
+  padding: 40px;
+  /* width: 175px;
+    height: 175px; */
+  /* width: 170px;
+    height: 170px; */
+  /* Img, ocupa la mitad de su contenedor */
+
+  width: 50%;
+  height: 170px;
+}
+
+.card-body {
+  background-color: var(--white);
+
+  /* Hace que el cuerpo de la tarjeta ocupe todo el ancho de su contenedor */
+  /* width: 100%; 
+    padding: 20px; */
+}
+
+.card-titulo {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 900;
+  color: var(--blue);
+  font-size: 22px;
+}
+
+.dark-card .card-body {
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
+.dark-card .card-titulo {
+  color: var(--white);
+}
+
+.dark-card .card-container-imagen {
+  background-color: var(--light-blue);
+}

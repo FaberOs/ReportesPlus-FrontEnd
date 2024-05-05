@@ -17,7 +17,7 @@
   padding: 0 15px;
 }
 
-.columna h4 {
+.columna h2 {
   font-size: 14px;
   font-weight: bold;
 }
@@ -122,4 +122,18 @@
     max-width: 100px; /* Tamaño máximo de las imágenes en pantallas pequeñas */
     height: auto; /* Altura automática */
   }
+}
+
+/* Dark Theme Styles */
+.dark-footer {
+  background-color: var(--dark-light-gray);
+  color: var(--white);
+}
+
+.dark-footer .universidad-info h2 {
+  color: var(--white);
+}
+
+.dark-footer .universidad-info p {
+  color: var(--white);
 }
