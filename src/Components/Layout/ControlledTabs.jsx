@@ -13,7 +13,7 @@ function ControlledTabs() {
   const [key, setKey] = useState("ingresos");
 
   // titulos de las columnas
-  const lista2 = ["id", "name", "city", "dirrecion"];
+  const lista2 = ["id", "name", "city", "direcion"];
   const listatitulosingresos = [
     "num",
     "tipo documento",
@@ -86,7 +86,7 @@ function ControlledTabs() {
           id="justify-tab-example"
           activeKey={key}
           onSelect={(k) => setKey(k)}
-          className="mb-3"
+          className="mb-3 mt-2"
           justify
         >
           <Tab eventKey="ingresos" title="INGRESOS">
@@ -97,6 +97,12 @@ function ControlledTabs() {
           </Tab>
           <Tab eventKey="gastos" title="GASTOS">
             <ResponsiveTable data={DisplayData} lista={lista2} />
+          </Tab>
+          <Tab eventKey="descuentos" title="DESCUENTOS">
+            <ResponsiveTable
+              data={DisplayDataAxios}
+              lista={listatitulosingresos}
+            />
           </Tab>
         </Tabs>
       </div>

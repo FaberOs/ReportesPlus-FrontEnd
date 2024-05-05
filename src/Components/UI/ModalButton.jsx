@@ -3,6 +3,7 @@ import PropTypes from "prop-types"; // Importa PropTypes para validar las props
 import "../../Styles/Components/SimpleButton.css";
 
 import ModalGeneric from "../Common/Modal.jsx";
+import { useThemeContext } from "../../ThemeContext.jsx";
 
 const ModalButton = ({
   buttonText,
@@ -15,9 +16,16 @@ const ModalButton = ({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const { contextTheme } = useThemeContext();
+  const isDarkTheme = contextTheme === "Dark";
+
   return (
     <>
-      <button className="btn-button" type="submit" onClick={handleShow}>
+      <button
+        className={`btn-button ${isDarkTheme ? "dark-SimpleButton" : ""}`}
+        type="submit"
+        onClick={handleShow}
+      >
         {buttonText}
       </button>
       <ModalGeneric

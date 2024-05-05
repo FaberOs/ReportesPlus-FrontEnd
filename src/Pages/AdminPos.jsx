@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useThemeContext } from "../ThemeContext.jsx";
 
 /* import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx"; */
@@ -8,10 +9,12 @@ import Sidebar from "../Components/Layout/Sidebar.jsx";
 
 function AdminPos() {
   const location = useLocation();
+  const { contextTheme } = useThemeContext();
+  const isDarkTheme = contextTheme === "Dark";
 
   useEffect(() => {
-    document.body.className = "TablaConsulta";
-  }, [location]);
+    document.body.className = isDarkTheme ? "Dark" : "Light";
+  }, [location, isDarkTheme]);
 
   return (
     <div>

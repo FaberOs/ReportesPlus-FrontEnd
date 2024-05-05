@@ -1,0 +1,4 @@
+npm install axios
+npm install xlsx
+
+npm install react-switch

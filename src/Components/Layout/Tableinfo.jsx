@@ -1,13 +1,14 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Styles/Layout/StyleTabla.css";
-
 import SectionContainer from "../Common/SectionContainer.jsx";
 import ResponsiveTable from "./ResponsiveTable.jsx";
 import ControlledTabs from "./ControlledTabs.jsx";
-
 import JsonData from "../Features/data.json";
+import { useThemeContext } from "../../ThemeContext";
 
 const Tableinfo = () => {
+  const { contextTheme } = useThemeContext();
+  const isDarkTheme = contextTheme === "Dark";
+
   const lista3 = ["id", "name", "city", "dirrecion"];
 
   const DisplayData = JsonData.map((info) => {
@@ -22,7 +23,11 @@ const Tableinfo = () => {
   });
 
   return (
-    <div className="d-flex justify-content-center">
+    <div
+      className={`d-flex justify-content-center ${
+        isDarkTheme ? "dark-theme" : ""
+      }`}
+    >
       <div className="col-11">
         <div>
           <SectionContainer titulo="REPORTE GENERAL DE POSGRADOS" />

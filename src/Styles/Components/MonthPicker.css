@@ -1,3 +1,5 @@
+/* MonthPicker.css */
+
 .monthpicker-container {
   display: flex;
   flex-direction: column;
@@ -15,16 +17,37 @@
   margin-bottom: 15px; /* Ajuste el margen inferior para separación */
   font-family: "Open Sans", sans-serif; /* Fuente Open Sans */
   color: #555; /* Color de texto gris */
-  border: 2px solid var(--blue); /* Borde azul */
+  border: 2px solid var(--light-gray);
   border-radius: 25px; /* Borde redondeado */
   padding: 8px 12px; /* Espaciado interno */
   width: 100%; /* Ancho completo */
+  transition: border 0.3s; /* Agrega una transición para el borde */
 }
 
 .monthpicker:focus {
   outline: none; /* Elimina el contorno de enfoque */
+  border-color: var(--blue);
 }
 
 .monthpicker::placeholder {
   color: #666; /* Color gris oscuro para el placeholder */
+}
+
+/* Estilos para el tema oscuro */
+.dark-theme .monthpicker-label {
+  color: var(--white); /* Cambia el color del label en el tema oscuro */
+}
+
+.dark-theme .monthpicker {
+  color: var(--white); /* Cambia el color del texto en el tema oscuro */
+  background-color: var(--input-gray);
+  border: 2px solid var(--input-gray); /* Borde transparente */
+}
+
+.dark-theme .monthpicker:focus {
+  border-color: var(--white);
+}
+
+.dark-theme .monthpicker::placeholder {
+  color: var(--white); /* Color gris oscuro para el placeholder */
 }

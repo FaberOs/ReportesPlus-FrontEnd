@@ -1,15 +1,16 @@
+/* SectionContainer.css */
+
 .section-container {
   margin-top: 20px;
   font-family: "Open Sans", sans-serif;
   border-radius: 20px;
-  padding: 10px 20px;
-  background-color: var(--white);
-  box-shadow: var(--shadow);
   padding: 20px;
   display: flex;
   width: 100%;
   justify-content: space-between; /* Coloca los elementos a cada extremo */
   align-items: center;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
 }
 
 .section-container h1 {
@@ -20,11 +21,6 @@
 }
 
 @media (max-width: 670px) {
-  .section-container {
-    flex-direction: column;
-    align-items: center; /* Alinea los elementos al principio */
-  }
-
   .section-container h1 {
     font-size: 18px;
     margin-bottom: 15px;
@@ -32,13 +28,17 @@
 }
 
 @media (max-width: 400px) {
-  .section-container {
-    flex-direction: column;
-    align-items: center; /* Alinea los elementos al principio */
-  }
-
   .section-container h1 {
     font-size: 14px;
     margin-bottom: 15px;
   }
+}
+
+/* Dark Theme Styles */
+.dark-SectionContainer {
+  background-color: var(--dark-light-gray);
+}
+
+.dark-SectionContainer h1 {
+  color: var(--white);
 }
