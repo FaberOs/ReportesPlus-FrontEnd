@@ -21,7 +21,7 @@ const ModalButton = ({
       <button className="btn-button" type="submit" onClick={handleShow}>
         {buttonText}        
       </button>
-      <ToastNotify accionar={true} tipo='E'/> 
+      <ToastNotify accionar={true} tipo='C'/> 
       <ModalGeneric
         show={show}
         handleClose={handleClose}

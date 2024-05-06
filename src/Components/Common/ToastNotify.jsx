@@ -1,13 +1,15 @@
 
+
 import React, { useState } from 'react';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import ImagenI from'../../Assets/informacion.png';
-import ImagenW from'../../Assets/Warning.png';
-import ImagenE from'../../Assets/error.png';
-import ImagenS from'../../Assets/Success.png';
+import ImagenI from'../../Assets/Information.svg';
+import ImagenW from'../../Assets/Advertencia.svg';
+import ImagenE from'../../Assets/Error.svg';
+import ImagenS from'../../Assets/Success.svg';
+import ImagenU from'../../Assets/User.svg';
 import '../../Styles/Components/toast.css';
  
 
@@ -55,7 +57,7 @@ function ToastNotify({accionar, tipo}) {
                             </Toast.Body>                    
                         </Toast>
                         :tipo === 'E'
-                         ?<Toast  show={showA} onClose={toggleShowA} bg={'danger'}  >
+                         ?<Toast  show={showA} onClose={toggleShowA}  bg={'danger'} >
                             <Toast.Body >
                                     <Row md={0}> 
                                         <Col>
@@ -69,9 +71,10 @@ function ToastNotify({accionar, tipo}) {
                                             <button type="button" class="btn-close active me-1 m-1 btn btn-outline-light " data-bs-dismiss="toast" aria-label="Close"></button>
                                         </Col>
                                     </Row>                        
-                            </Toast.Body>                    
+                            </Toast.Body>           
                         </Toast>
-                        :<Toast  show={showA} onClose={toggleShowA} bg={'success'}  >
+                        :tipo === 'S'
+                        ?<Toast  show={showA} onClose={toggleShowA} bg={'success'}  >
                             <Toast.Body >
                                     <Row md={0}> 
                                         <Col>
@@ -87,6 +90,23 @@ function ToastNotify({accionar, tipo}) {
                                     </Row>                        
                             </Toast.Body>                    
                         </Toast>
+                        :<Toast  show={showA} onClose={toggleShowA} bg={'secondary'}  >
+                        <Toast.Body >
+                                <Row md={0}> 
+                                    <Col>
+                                        <img className="imagi" src={ImagenU} alt="imagen"/>         
+                                    </Col>
+                                    <Col className="textdisposicion" xs={7}>                                
+                                        <h5><strong className="me-auto text-white">Custom</strong></h5>
+                                        <h6 className='text-white'>Custom notification message.</h6>
+                                    </Col>                            
+                                    <Col >
+                                        <button type="button" class="btn-close active me-1 m-1 btn btn-outline-light " data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </Col>
+                                </Row>                        
+                        </Toast.Body>                    
+                    </Toast>
+                        
             }            
             
         </ToastContainer>
