@@ -5,7 +5,7 @@ import ControlledTabs from "./ControlledTabs.jsx";
 import JsonData from "../Features/data.json";
 import { useThemeContext } from "../../ThemeContext";
 
-const Tableinfo = () => {
+const Tableinfo = ({ mes, anio, codigo }) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
 
@@ -33,7 +33,7 @@ const Tableinfo = () => {
           <SectionContainer titulo="REPORTE GENERAL DE POSGRADOS" />
         </div>
         <div className="contenedor">
-          <ControlledTabs />
+        <ControlledTabs mes={mes} anio={anio} codigo={codigo} />
         </div>
         <div className="contenedor-Small">
           <div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useThemeContext } from "../ThemeContext.jsx";
 
@@ -15,13 +15,20 @@ function TablaConsulta() {
     document.body.className = isDarkTheme ? "Dark" : "Light";
   }, [location, isDarkTheme]);
 
+  // Parse the query string
+  const query = new URLSearchParams(location.search);
+  const mes = query.get('mes');
+  const anio = query.get('anio');
+  const codigo = query.get('codigo');
+
   return (
     <div>
       <header>
         <Header />
       </header>
       <main>
-        <Tableinfo />
+        {/* Pass the parameters as props to Tableinfo */}
+        <Tableinfo mes={mes} anio={anio} codigo={codigo} />
       </main>
       <footer>
         <Footer />

@@ -8,11 +8,19 @@ import es from "date-fns/locale/es";
 import "../../Styles/Components/MonthPicker.css";
 import { useThemeContext } from "../../ThemeContext.jsx";
 
-const MonthPicker = ({ label, placeholder }) => {
+const MonthPicker = ({ label, placeholder, onChange  }) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
 
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    if (onChange && date) {
+      // Formato "MM/yyyy"
+      onChange(`${date.getMonth() + 1}/${date.getFullYear()}`);
+    }
+  };
 
   const today = new Date();
   const minDate = new Date(2021, 0); // Enero 2021
@@ -25,7 +33,7 @@ const MonthPicker = ({ label, placeholder }) => {
       </label>
       <DatePicker
         selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
+        onChange={handleDateChange}
         dateFormat="MM/yyyy"
         showMonthYearPicker
         placeholderText={placeholder}
@@ -41,6 +49,7 @@ const MonthPicker = ({ label, placeholder }) => {
 MonthPicker.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default MonthPicker;
