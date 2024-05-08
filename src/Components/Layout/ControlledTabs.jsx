@@ -15,7 +15,9 @@ function ControlledTabs({ mes, anio, codigo }) {
   useEffect(() => {
     const fetchIngresos = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/posgrados/reporte/ingresos?mes=${mes}&anio=${anio}&codigo=${codigo}`);
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/posgrados/reporte/ingresos?mes=${mes}&anio=${anio}&codigo=${codigo}`
+        );
         setIngresos(response.data.ingresos || []);
       } catch (error) {
         console.error("Error fetching ingresos: ", error);
@@ -25,8 +27,10 @@ function ControlledTabs({ mes, anio, codigo }) {
 
     const fetchGastos = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/posgrados/reporte/gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`);
-        setGastos(response.data.gastos || []);
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/posgrados/reporte/gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`
+        );
+        setGastos(response.data.listaGastos || []);
       } catch (error) {
         console.error("Error fetching gastos: ", error);
         setGastos([]);
@@ -35,7 +39,9 @@ function ControlledTabs({ mes, anio, codigo }) {
 
     const fetchConsolidado = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/posgrados/reporte/consolidado?mes=${mes}&anio=${anio}&codigo=${codigo}`);
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/posgrados/reporte/consolidado?mes=${mes}&anio=${anio}&codigo=${codigo}`
+        );
         setConsolidado(response.data);
         console.log("Respuesta: ", response.data); // Muestra la respuesta actual correctamente
         console.log("Consolidado: ", consolidado); // Muestra el estado anterior a la actualización
@@ -48,12 +54,16 @@ function ControlledTabs({ mes, anio, codigo }) {
     fetchIngresos();
     fetchGastos();
     fetchConsolidado();
-  
   }, [mes, anio, codigo]);
 
   const columnTitlesIngresos = [
-    "ID", "Tipo Documento", "Número Documento", "Fecha",
-    "Cuenta Movimiento", "Observación", "Valor Ejecutado"
+    "ID",
+    "Tipo Documento",
+    "Número Documento",
+    "Fecha",
+    "Cuenta Movimiento",
+    "Observación",
+    "Valor Ejecutado",
   ];
 
   const displayDataGastos = gastos.map((gasto, index) => (
@@ -102,7 +112,6 @@ function ControlledTabs({ mes, anio, codigo }) {
       <td colSpan="9">No data available</td>
     </tr>
   );
-  
 
   const displayDataJson = JsonData.map((info, index) => (
     <tr key={info.id || index}>
@@ -113,9 +122,7 @@ function ControlledTabs({ mes, anio, codigo }) {
     </tr>
   ));
 
-
   // Se asume que los datos vienen en un solo objeto y no un array, por lo tanto, la conversión a tabla sería directa.
-
 
   return (
     <div className="container-fluid">
@@ -128,13 +135,45 @@ function ControlledTabs({ mes, anio, codigo }) {
           justify
         >
           <Tab eventKey="ingresos" title="INGRESOS">
-            <ResponsiveTable data={displayDataIngresos} lista={columnTitlesIngresos} />
+            <ResponsiveTable
+              data={displayDataIngresos}
+              lista={columnTitlesIngresos}
+            />
           </Tab>
           <Tab eventKey="gastos" title="GASTOS">
-          <ResponsiveTable data={displayDataGastos} lista={["ID","Tipo Documento", "Número Movimiento", "Fecha", "Cuenta Movimiento", "Observación", "Valor Definitivo", "Valor Registro", "Valor Ejecutado", "Valor Pagado", "Saldo", "Estado"]} />
-            </Tab>
+            <ResponsiveTable
+              data={displayDataGastos}
+              lista={[
+                "ID",
+                "Tipo Documento",
+                "Número Movimiento",
+                "Fecha",
+                "Cuenta Movimiento",
+                "Observación",
+                "Valor Definitivo",
+                "Valor Registro",
+                "Valor Ejecutado",
+                "Valor Pagado",
+                "Saldo",
+                "Estado",
+              ]}
+            />
+          </Tab>
           <Tab eventKey="descuentos" title="DESCUENTOS">
-          <ResponsiveTable data={displayDataIngresos} lista={[   "Código Posgrado", "Nombre Posgrado", "Total Ingresos",  "Total Descuentos",  "Total Neto",  "Contribución", "Total Disponible","Gastos Certificados","Saldo"]} /> 
+            <ResponsiveTable
+              data={displayDataIngresos}
+              lista={[
+                "Código Posgrado",
+                "Nombre Posgrado",
+                "Total Ingresos",
+                "Total Descuentos",
+                "Total Neto",
+                "Contribución",
+                "Total Disponible",
+                "Gastos Certificados",
+                "Saldo",
+              ]}
+            />
           </Tab>
         </Tabs>
       </div>

@@ -3,11 +3,12 @@ import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import ImagenI from "../../Assets/informacion.png";
-import ImagenW from "../../Assets/Warning.png";
-import ImagenE from "../../Assets/error.png";
-import ImagenS from "../../Assets/Success.png";
-import "../../Styles/Components/Toast.css";
+import ImagenI from "../../Assets/Information.svg";
+import ImagenW from "../../Assets/Advertencia.svg";
+import ImagenE from "../../Assets/Error.svg";
+import ImagenS from "../../Assets/Success.svg";
+import ImagenU from "../../Assets/User.svg";
+import "../../Styles/Components/toast.css";
 
 function ToastNotify({ accionar, tipo }) {
   const [showA, setShowA] = useState(accionar);
@@ -93,7 +94,7 @@ function ToastNotify({ accionar, tipo }) {
             </Row>
           </Toast.Body>
         </Toast>
-      ) : (
+      ) : tipo === "S" ? (
         <Toast show={showA} onClose={toggleShowA} bg={"success"}>
           <Toast.Body>
             <Row md={0}>
@@ -105,6 +106,30 @@ function ToastNotify({ accionar, tipo }) {
                   <strong className="me-auto text-white">Success</strong>
                 </h5>
                 <h6 className="text-white">Success notification message.</h6>
+              </Col>
+              <Col>
+                <button
+                  type="button"
+                  className="btn-close active me-1 m-1 btn btn-outline-light "
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </Col>
+            </Row>
+          </Toast.Body>
+        </Toast>
+      ) : (
+        <Toast show={showA} onClose={toggleShowA} bg={"secondary"}>
+          <Toast.Body>
+            <Row md={0}>
+              <Col>
+                <img className="imagi" src={ImagenU} alt="imagen" />
+              </Col>
+              <Col className="textdisposicion" xs={7}>
+                <h5>
+                  <strong className="me-auto text-white">Custom</strong>
+                </h5>
+                <h6 className="text-white">Custom notification message.</h6>
               </Col>
               <Col>
                 <button

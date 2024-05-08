@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useThemeContext } from "../ThemeContext.jsx";
 
 import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx";
-import Tableinfo from "../Components/Layout/Tableinfo.jsx";
+import TableTabs from "../Components/Layout/TableTabs.jsx";
 
-function TablaConsulta() {
+function ReportePos() {
   const location = useLocation();
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
@@ -17,9 +17,9 @@ function TablaConsulta() {
 
   // Parse the query string
   const query = new URLSearchParams(location.search);
-  const mes = query.get('mes');
-  const anio = query.get('anio');
-  const codigo = query.get('codigo');
+  const mes = query.get("mes");
+  const anio = query.get("anio");
+  const codigo = query.get("codigo");
 
   return (
     <div>
@@ -28,7 +28,7 @@ function TablaConsulta() {
       </header>
       <main>
         {/* Pass the parameters as props to Tableinfo */}
-        <Tableinfo mes={mes} anio={anio} codigo={codigo} />
+        <TableTabs mes={mes} anio={anio} codigo={codigo} />
       </main>
       <footer>
         <Footer />
@@ -37,4 +37,4 @@ function TablaConsulta() {
   );
 }
 
-export default TablaConsulta;
+export default ReportePos;

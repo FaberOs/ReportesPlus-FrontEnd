@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useThemeContext } from "../ThemeContext.jsx";
 
 import Header from "../Components/Layout/Header.jsx";
@@ -52,21 +52,32 @@ function Home() {
                 <div className=" col-lg-4 col-md-4 col-sm-12 d-flex align-items-center justify-content-center pt-4">
                   <Card
                     imagen={imgCard1}
-                    titulo="Reporte Posgrado"
-                    boton={<SimpleButton buttonText="CONSULTAR" />}
+                    titulo="Reportes por Programa"
+                    boton={
+                      <Link to="/consultar" style={{ textDecoration: "none" }}>
+                        <SimpleButton buttonText="CONSULTAR" />
+                      </Link>
+                    }
                   ></Card>
                 </div>
                 <div className=" col-lg-4 col-md-4 col-sm-12 d-flex align-items-center justify-content-center pt-4">
                   <Card
                     imagen={imgCard2}
-                    titulo="Reporte Pregrado"
-                    boton={<SimpleButton buttonText="CONSULTAR" />}
+                    titulo="Reportes Macro"
+                    boton={
+                      <Link
+                        to="/consultar-macro"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <SimpleButton buttonText="CONSULTAR" />
+                      </Link>
+                    }
                   ></Card>
                 </div>
                 <div className=" col-lg-4 col-md-4 col-sm-12 d-flex align-items-center justify-content-center pt-4">
                   <Card
                     imagen={imgCard3}
-                    titulo="Reporte por Dependencia"
+                    titulo="Reporte por Vicerrectoria"
                     boton={<SimpleButton buttonText="CONSULTAR" />}
                   ></Card>
                 </div>

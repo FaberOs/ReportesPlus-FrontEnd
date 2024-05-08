@@ -4,7 +4,7 @@ import { useThemeContext } from "../ThemeContext.jsx";
 
 /* import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx"; */
-import Tableinfo from "../Components/Layout/Tableinfo.jsx";
+import Tableinfo from "../Components/Layout/TableTabs.jsx";
 import Sidebar from "../Components/Layout/Sidebar.jsx";
 
 function AdminPos() {

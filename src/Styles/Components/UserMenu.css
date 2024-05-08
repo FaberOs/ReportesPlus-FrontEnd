@@ -1,0 +1,69 @@
+.user-menu-container {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle.user-button {
+  background-color: var(--white);
+  border: 2px solid var(--gray);
+  border-radius: 25px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.dropdown-toggle.user-button:hover {
+  background-color: var(--light-gray);
+}
+
+.user-name {
+  margin-left: 10px;
+}
+
+.dropdown-menu {
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.dropdown-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item:hover {
+  background-color: var(--light-gray);
+}
+
+.dropdown-item > * {
+  margin-right: 10px;
+}
+
+.dark .user-button {
+  background-color: var(--light-blue);
+  border-color: var(--light-blue);
+  color: var(--white-interact);
+}
+
+.dark .user-button:hover {
+  border-color: var(--white);
+  background-color: var(--white-interact);
+  color: var(--blue);
+}
+
+.dark .dropdown-menu {
+  background-color: var(--dark-light-gray);
+}
+
+.dark .dropdown-item {
+  color: var(--white-interact);
+}
+
+.dark .dropdown-item:hover {
+  background-color: var(--light-blue);
+  color: var(--white-interact);
+}

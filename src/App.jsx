@@ -1,12 +1,14 @@
 import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 
-import UserConsult from "./Pages/UserConsult";
-import TablaConsulta from "./Pages/TablaConsulta";
+import ConsultPos from "./Pages/ConsultPos";
+import ReportePos from "./Pages/ReportePos";
 import Login from "./Pages/Login";
 
 import AdminPos from "./Pages/AdminPos";
 import Home from "./Pages/Home";
+import ConsultMacro from "./Pages/ConsultMacro";
+import ReporteMacro from "./Pages/ReporteMacro";
 
 function App() {
   return (
@@ -17,8 +19,15 @@ function App() {
 
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/consultar" element={<UserConsult />} />
-        <Route path="/consultar/consulta" element={<TablaConsulta />} />
+        <Route path="/consultar" element={<ConsultPos />} />
+        <Route path="/consultar/reporte-posgrado" element={<ReportePos />} />
+
+        <Route path="/consultar-macro" element={<ConsultMacro />} />
+        <Route
+          path="/consultar-macro/reporte-macro"
+          element={<ReporteMacro />}
+        />
+
         <Route path="/admin/dashboard" element={<AdminPos />} />
         <Route path="/admin/posgrados" element={<AdminPos />} />
         <Route path="/admin/pregrados" element={<AdminPos />} />
