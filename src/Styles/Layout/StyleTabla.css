@@ -2,9 +2,9 @@
 
 /* Tablas */
 
-.contenedor,
-.contenedor-Small {
+.contenedor {
   margin-top: 20px;
+  margin-bottom: 20px;
   font-family: "Open Sans", sans-serif;
   border-radius: 20px;
   padding: 10px 20px;
@@ -16,18 +16,6 @@
   display: flex;
   width: 100%;
   align-items: center;
-}
-
-.contenedor-Small {
-  margin-bottom: 30px;
-  align-items: center;
-}
-
-.contenedor-Small h1 {
-  margin: 10px;
-  font-size: 18px;
-  color: var(--blue);
-  font-weight: bold;
 }
 
 /* ControlledTabs */
@@ -48,11 +36,11 @@
 
 /* Dark Theme Styles */
 .dark-theme .contenedor,
-.dark-theme .contenedor-Small {
+.dark-them {
   background-color: var(--dark-light-gray);
 }
 
-.dark-theme .contenedor-Small h1 {
+.dark-them h1 {
   color: var(--white);
 }
 
