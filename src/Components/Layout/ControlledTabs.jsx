@@ -109,7 +109,7 @@ function ControlledTabs({ mes, anio, codigo }) {
     <tr>
       <td colSpan="9">No data available</td>
     </tr>
-  );
+  ];
   
 
   const displayDataJson = JsonData.map((info, index) => (
