@@ -16,8 +16,8 @@ function UserConsult() {
   const navigate = useNavigate();
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [timer, setTimer] = useState(null);
 
   useEffect(() => {
@@ -35,12 +35,12 @@ function UserConsult() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/login', {
+      const response = await axios.post("http://localhost:8080/api/v1/login", {
         usuario: username,
-        clave: password
+        clave: password,
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      navigate('/home'); // Redirigir a la ruta de consulta
+      navigate("/home"); // Redirigir a la ruta de consulta
     } catch (error) {
       console.error("Error de autenticación", error);
       if (error.response && error.response.status === 401) {
@@ -53,11 +53,11 @@ function UserConsult() {
 
   const handleLogout = () => {
     console.log("Sesión cerrada por inactividad.");
-    navigate('/login'); // o la ruta que corresponda a tu página de login
+    navigate("/login"); // o la ruta que corresponda a tu página de login
   };
 
   useEffect(() => {
-    const events = ['click', 'load', 'keydown'];
+    const events = ["click", "load", "keydown"];
 
     const resetTimer = () => {
       clearTimeout(timer);
@@ -92,7 +92,7 @@ function UserConsult() {
               label="Usuario"
               value={username}
               onChange={handleUsernameChange}
-              placeholder="Escribe tu usuario"
+              placeholder=""
             />
           }
           input2={
@@ -101,14 +101,11 @@ function UserConsult() {
               type="password"
               value={password}
               onChange={handlePasswordChange}
-              placeholder="Escribe tu contraseña"
+              placeholder=""
             />
           }
           boton={
-            <SimpleButton
-              buttonText="INICIAR SESIÓN"
-              onClick={handleSubmit}
-            />
+            <SimpleButton buttonText="INICIAR SESIÓN" onClick={handleSubmit} />
           }
         />
       </main>

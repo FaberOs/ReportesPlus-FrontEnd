@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../../Styles/Layout/StyleTabla.css";
 import SectionContainer from "../Common/SectionContainer.jsx";
 import ResponsiveTable from "./ResponsiveTable.jsx";
@@ -21,7 +21,7 @@ const MacroTable = ({ mes, anio }) => {
           setData([]);
         }
       } catch (error) {
-        console.error('Error fetching macro report:', error);
+        console.error("Error fetching macro report:", error);
         setData([]);
       }
     };
@@ -41,10 +41,9 @@ const MacroTable = ({ mes, anio }) => {
       <td>{dato.contribucion}</td>
       <td>{dato.total_disponible}</td>
       <td>{dato.gastos_certificados}</td>
-      <td>{dato.saldo}</td>  
+      <td>{dato.saldo}</td>
     </tr>
   ));
-
 
   const columns = [
     "Código Posgrado",
@@ -55,11 +54,15 @@ const MacroTable = ({ mes, anio }) => {
     "Contribución",
     "Total Disponible",
     "Gastos Certificados",
-    "Saldo"
+    "Saldo",
   ];
 
   return (
-    <div className={`d-flex justify-content-center ${isDarkTheme ? "dark-theme" : ""}`}>
+    <div
+      className={`d-flex justify-content-center ${
+        isDarkTheme ? "dark-theme" : ""
+      }`}
+    >
       <div className="col-11">
         <SectionContainer titulo="REPORTE MACRO" />
         <div className="contenedor">
