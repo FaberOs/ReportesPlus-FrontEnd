@@ -1,5 +1,7 @@
 import "./App.css";
 import { Route, Routes, Navigate, Outlet } from "react-router-dom";
+import { AuthProvider, useAuth } from './Context/AuthProvider.jsx'
+
 
 import Sidebar from "./Components/Layout/Sidebar.jsx";
 import ConsultPos from "./Pages/ConsultPos";
@@ -12,38 +14,49 @@ import ReporteMacro from "./Pages/ReporteMacro";
 
 const AdminTemplate = () => {
   return (
-    <div>
-      <Sidebar />
-      <Outlet></Outlet>
-    </div>
+      <div>
+          <Sidebar />
+          <Outlet />
+      </div>
   );
+};
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+      // Redirecciona a la página de login si el usuario no está autenticado
+      return <Navigate to="/login" replace />;
+  }
+
+  return children;
 };
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
+          
+         
+            <Routes>
+                <Route path="/" element={<Navigate to="/login" replace />} />
+                <Route path="*" element={<Navigate to="/login" replace />} />
+                <Route path="/login" element={<Login />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/consultar" element={<ConsultPos />} />
-        <Route path="/consultar/reporte-posgrado" element={<ReportePos />} />
-
-        <Route path="/consultar-macro" element={<ConsultMacro />} />
-        <Route
-          path="/consultar-macro/reporte-macro"
-          element={<ReporteMacro />}
-        />
-
-        <Route path="/admin" element={<AdminTemplate />}>
-          <Route path="dashboard" element={<AdminPos />} />
-          <Route path="consultar" element={<AdminPos />} />
-          <Route path="posgrados" element={<AdminPos />} />
-          <Route path="pregrados" element={<AdminPos />} />
-        </Route>
-      </Routes>
+               
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/consultar" element={<ConsultPos />} />
+                    <Route path="/consultar/reporte-posgrado" element={<ReportePos />} />
+                    <Route path="/consultar-macro" element={<ConsultMacro />} />
+                    <Route path="/consultar-macro/reporte-macro" element={<ReporteMacro />} />
+                    <Route path="/admin" element={<AdminTemplate />}>
+                        <Route path="dashboard" element={<AdminPos />} />
+                        <Route path="consultar" element={<AdminPos />} />
+                        <Route path="posgrados" element={<AdminPos />} />
+                        <Route path="pregrados" element={<AdminPos />} />
+                    </Route>
+               
+            </Routes>
+      
     </>
   );
 }

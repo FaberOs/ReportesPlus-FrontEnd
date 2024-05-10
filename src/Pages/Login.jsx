@@ -18,6 +18,7 @@ function UserConsult() {
   const isDarkTheme = contextTheme === "Dark";
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [timer, setTimer] = useState(null);
 
   useEffect(() => {
     document.body.className = isDarkTheme ? "Dark" : "Light";
@@ -39,7 +40,7 @@ function UserConsult() {
         clave: password
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      navigate('/consultar'); // Redirigir a la ruta de consulta
+      navigate('/home'); // Redirigir a la ruta de consulta
     } catch (error) {
       console.error("Error de autenticación", error);
       if (error.response && error.response.status === 401) {
@@ -49,6 +50,33 @@ function UserConsult() {
       }
     }
   };
+
+  const handleLogout = () => {
+    console.log("Sesión cerrada por inactividad.");
+    navigate('/login'); // o la ruta que corresponda a tu página de login
+  };
+
+  useEffect(() => {
+    const events = ['click', 'load', 'keydown'];
+
+    const resetTimer = () => {
+      clearTimeout(timer);
+      setTimer(setTimeout(handleLogout, 30 * 60 * 1000)); // 30 minutos
+    };
+
+    for (const event of events) {
+      window.addEventListener(event, resetTimer);
+    }
+
+    resetTimer();
+
+    return () => {
+      for (const event of events) {
+        window.removeEventListener(event, resetTimer);
+      }
+      clearTimeout(timer);
+    };
+  }, [timer]);
 
   return (
     <div>

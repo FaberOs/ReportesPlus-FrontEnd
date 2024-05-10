@@ -28,7 +28,7 @@ function ControlledTabs({ mes, anio, codigo }) {
     const fetchGastos = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/api/v1/posgrados/reporte/gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`);
-        setGastos(response.data.gastos || []);
+        setGastos(response.data.listaGastos || []);
       } catch (error) {
         console.error("Error fetching gastos: ", error);
         setGastos([]);
@@ -142,24 +142,12 @@ function ControlledTabs({ mes, anio, codigo }) {
           <Tab eventKey="gastos" title="GASTOS">
             <ResponsiveTable
               data={displayDataGastos}
-              lista={[
-                "ID",
-                "Tipo Documento",
-                "Número Movimiento",
-                "Fecha",
-                "Cuenta Movimiento",
-                "Observación",
-                "Valor Definitivo",
-                "Valor Registro",
-                "Valor Ejecutado",
-                "Valor Pagado",
-                "Saldo",
-                "Estado",
+              lista={[ "ID", "Tipo Documento", "Número Movimiento", "Fecha", "Cuenta Movimiento", "Observación", "Valor Definitivo","Valor Registro","Valor Ejecutado", "Valor Pagado","Saldo","Estado",
               ]}
             />
           </Tab>
           <Tab eventKey="descuentos" title="DESCUENTOS">
-          <ResponsiveTable data={displayDataIngresos} lista={[   "Código Posgrado", "Nombre Posgrado", "Total Ingresos",  "Total Descuentos",  "Total Neto",  "Contribución", "Total Disponible","Gastos Certificados","Saldo"]} /> 
+          <ResponsiveTable data={displayDataConsolidado} lista={[   "Código Posgrado", "Nombre Posgrado", "Total Ingresos",  "Total Descuentos",  "Total Neto",  "Contribución", "Total Disponible","Gastos Certificados","Saldo"]} /> 
           </Tab>
         </Tabs>
       </div>

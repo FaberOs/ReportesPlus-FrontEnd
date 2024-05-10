@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useThemeContext } from "../../ThemeContext";
 import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   faUserCircle,
   faSignOutAlt,
@@ -13,13 +14,17 @@ const UserMenu = () => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
 
   const handleLogout = () => {
-    // Aquí puedes agregar la lógica para cerrar sesión
+    console.log("Sesión cerrada por inactividad.");
+    navigate('/login'); // o la ruta que corresponda a tu página de login
+
   };
 
   return (
