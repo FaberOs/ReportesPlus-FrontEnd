@@ -1,20 +1,19 @@
 .sidebar-custom {
-  height: 100vh; /* todo el alto de la pantalla */
+  height: 100vh;
   position: fixed;
-  /* top: var(--header-height); */ /* Comienza después del Header */
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 1000; /* posición en la pila de capas (menor al header) */
-  padding-top: 80px; /* altura predeterminada desde la parte superior (mostrar primer icono) */
-  transition: width 0.7s; /* tiempo transición al expandir */
+  z-index: 1000;
+  padding-top: 80px;
+  transition: width 0.7s;
+  background-color: var(--white);
 }
 
 .option-container {
   font-family: "Open Sans", sans-serif;
-  color: var(--dark); /* Color letra */
-  text-decoration: none; /* Quitar subrayado */
-
+  color: var(--dark);
+  text-decoration: none;
   width: 100%;
   height: 10%;
   padding-top: 5px;
@@ -31,24 +30,34 @@
 }
 
 .sidebar-option:hover {
-  background-color: var(
-    --gray
-  ); /*Cambiar color al pasar el cursor sobre la opción del sidebar*/
-  border-top-left-radius: 10px; /* borde superior izquierdo */
-  border-bottom-left-radius: 10px; /* borde inferior izquierdo */
-  color: var(--dark); /* color */
+  background-color: var(--gray);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: var(--dark);
 }
 
-.custom-image {
-  width: 25px; /* tamaño icono */
+.custom-icon {
+  width: 25px;
   height: 25px;
-  margin-left: 15px; /* margen a la izq. */
+  margin-left: 15px;
 }
 
 .custom-label {
-  margin-left: 15px; /* margen a la izq. */
-  /* lógica para la fluides del texto al desplegarse */
-  overflow: hidden; /* ocultar */
+  margin-left: 15px;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.dark-sidebar {
+  background-color: var(--dark-light-gray);
+}
+
+.dark-sidebar .option-container {
+  color: var(--white-interact);
+}
+
+.dark-sidebar .sidebar-option:hover {
+  background-color: var(--light-blue);
+  color: var(--white-interact);
 }

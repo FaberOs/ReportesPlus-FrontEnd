@@ -2,6 +2,9 @@ import { useState } from "react";
 import ReactSwitch from "react-switch";
 import { useThemeContext } from "../../ThemeContext";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+
 const ThemeToggler = () => {
   const { contextTheme, setContextTheme } = useThemeContext();
   const [checked, setChecked] = useState(contextTheme === "Dark");
@@ -16,17 +19,47 @@ const ThemeToggler = () => {
     <ReactSwitch
       checked={checked}
       onChange={handleSwitch}
-      onColor="#86d3ff"
-      onHandleColor="#2693e6"
-      handleDiameter={30}
+      handleDiameter={28}
+      offColor="#d9d9d9"
+      onColor="#5056ac"
+      offHandleColor="#fff"
+      onHandleColor="#ecf0ff"
+      height={40}
+      width={70}
+      borderRadius={25}
+      activeBoxShadow="0px 0px 1px 2px #fffc35"
       uncheckedIcon={false}
       checkedIcon={false}
-      boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-      activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-      height={20}
-      width={48}
+      uncheckedHandleIcon={
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            fontSize: 18,
+            color: "#000",
+          }}
+        >
+          <FontAwesomeIcon icon={faSun} />
+        </div>
+      }
+      checkedHandleIcon={
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            color: "#000",
+            fontSize: 18,
+          }}
+        >
+          <FontAwesomeIcon icon={faMoon} />
+        </div>
+      }
       className="react-switch"
-      id="material-switch"
+      id="small-radius-switch"
     />
   );
 };

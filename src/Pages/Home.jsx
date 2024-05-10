@@ -31,9 +31,9 @@ function Home() {
           className={`container-fluid d-flex align-items-center justify-content-center mt-5 mb-5 ${
             isDarkTheme ? "dark-home" : ""
           }`}
+          style={{ padding: "0" }}
         >
-          <div className="row home-cards-container">
-            {" "}
+          <div className="row home-cards-container ">
             {/* fila ancho contenedor */}
             <div className="col-12">
               {" "}
@@ -49,7 +49,7 @@ function Home() {
               {/* contenedor cards */}
               <div className="row ">
                 {/* col-md-4 */}
-                <div className=" col-lg-4 col-md-4 col-sm-12 d-flex align-items-center justify-content-center pt-4">
+                <div className=" col-lg-4 col-md-6 col-sm-12 d-flex align-items-center justify-content-center pt-4">
                   <Card
                     imagen={imgCard1}
                     titulo="Reportes por Programa"
@@ -60,7 +60,7 @@ function Home() {
                     }
                   ></Card>
                 </div>
-                <div className=" col-lg-4 col-md-4 col-sm-12 d-flex align-items-center justify-content-center pt-4">
+                <div className="col-lg-4 col-md-6 col-sm-12 d-flex align-items-center justify-content-center pt-4 ">
                   <Card
                     imagen={imgCard2}
                     titulo="Reportes Macro"
@@ -74,7 +74,7 @@ function Home() {
                     }
                   ></Card>
                 </div>
-                <div className=" col-lg-4 col-md-4 col-sm-12 d-flex align-items-center justify-content-center pt-4">
+                <div className=" col-lg-4 col-md-6 col-sm-12 d-flex align-items-center justify-content-center pt-4">
                   <Card
                     imagen={imgCard3}
                     titulo="Reporte por Vicerrectoria"
