@@ -27,9 +27,7 @@ function ControlledTabs({ mes, anio, codigo }) {
 
     const fetchGastos = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/api/v1/posgrados/reporte/gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`
-        );
+        const response = await axios.get(`http://localhost:8080/api/v1/posgrados/reporte/gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`);
         setGastos(response.data.listaGastos || []);
       } catch (error) {
         console.error("Error fetching gastos: ", error);
@@ -43,7 +41,7 @@ function ControlledTabs({ mes, anio, codigo }) {
           `http://localhost:8080/api/v1/posgrados/reporte/consolidado?mes=${mes}&anio=${anio}&codigo=${codigo}`
         );
         setConsolidado(response.data);
-        console.log("Respuesta: ", response.data); // Muestra la respuesta actual correctamente
+        console.log("Respuesta consolidado: ", response.data); // Muestra la respuesta actual correctamente
         console.log("Consolidado: ", consolidado); // Muestra el estado anterior a la actualización
       } catch (error) {
         console.error("Error fetching consolidado: ", error);
@@ -95,7 +93,7 @@ function ControlledTabs({ mes, anio, codigo }) {
     </tr>
   ));
 
-  const displayDataConsolidado = consolidado ? (
+  const displayDataConsolidado = consolidado ? [
     <tr key="consolidado">
       <td>{consolidado.codigoPosgrado}</td>
       <td>{consolidado.nombrePosgrado}</td>
@@ -107,11 +105,12 @@ function ControlledTabs({ mes, anio, codigo }) {
       <td>{consolidado.gastos_certificados.toLocaleString()}</td>
       <td>{consolidado.saldo.toLocaleString()}</td>
     </tr>
-  ) : (
+  ] : [
     <tr>
       <td colSpan="9">No data available</td>
     </tr>
-  );
+  ];
+  
 
   const displayDataJson = JsonData.map((info, index) => (
     <tr key={info.id || index}>
@@ -143,37 +142,12 @@ function ControlledTabs({ mes, anio, codigo }) {
           <Tab eventKey="gastos" title="GASTOS">
             <ResponsiveTable
               data={displayDataGastos}
-              lista={[
-                "ID",
-                "Tipo Documento",
-                "Número Movimiento",
-                "Fecha",
-                "Cuenta Movimiento",
-                "Observación",
-                "Valor Definitivo",
-                "Valor Registro",
-                "Valor Ejecutado",
-                "Valor Pagado",
-                "Saldo",
-                "Estado",
+              lista={[ "ID", "Tipo Documento", "Número Movimiento", "Fecha", "Cuenta Movimiento", "Observación", "Valor Definitivo","Valor Registro","Valor Ejecutado", "Valor Pagado","Saldo","Estado",
               ]}
             />
           </Tab>
           <Tab eventKey="descuentos" title="DESCUENTOS">
-            <ResponsiveTable
-              data={displayDataIngresos}
-              lista={[
-                "Código Posgrado",
-                "Nombre Posgrado",
-                "Total Ingresos",
-                "Total Descuentos",
-                "Total Neto",
-                "Contribución",
-                "Total Disponible",
-                "Gastos Certificados",
-                "Saldo",
-              ]}
-            />
+          <ResponsiveTable data={displayDataConsolidado} lista={[   "Código Posgrado", "Nombre Posgrado", "Total Ingresos",  "Total Descuentos",  "Total Neto",  "Contribución", "Total Disponible","Gastos Certificados","Saldo"]} /> 
           </Tab>
         </Tabs>
       </div>

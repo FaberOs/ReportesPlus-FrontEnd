@@ -8,7 +8,7 @@
 .table th,
 .table td {
   padding: 8px;
-  max-width: 200px;
+  max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -69,16 +69,3 @@
   background-color: var(--light-blue);
   color: var(--white);
 }
-
-/* Establece anchos fijos para cada columna */
-/* .table th:nth-child(1),
-.table td:nth-child(1) {
-  width: 40px; 
-}
-
-.table th:nth-child(2),
-.table td:nth-child(2) {
-  width: 50px; 
-} */
-
-/* Agrega estilos adicionales según sea necesario */
