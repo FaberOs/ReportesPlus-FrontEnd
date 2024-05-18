@@ -26,7 +26,7 @@ const Sidebar = () => {
     >
       <SidebarOption to="" icon={faUser} label="Perfil" />
       <SidebarOption to="/admin/dashboard" icon={faHome} label="Inicio" />
-      <SidebarOption to="/admin/consultar" icon={faSearch} label="Consultar" />
+      <SidebarOption to="/home" icon={faSearch} label="Consultar" />
       <SidebarOption
         to="/admin/pregrados"
         icon={faGraduationCap}

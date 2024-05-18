@@ -39,7 +39,6 @@ function App() {
 
         <Route path="/admin" element={<AdminTemplate />}>
           <Route path="dashboard" element={<AdminPos />} />
-          <Route path="consultar" element={<AdminPos />} />
           <Route path="posgrados" element={<AdminPos />} />
           <Route path="pregrados" element={<AdminPos />} />
         </Route>

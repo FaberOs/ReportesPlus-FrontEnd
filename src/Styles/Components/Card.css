@@ -1,6 +1,16 @@
-.card-container {
-  /* box-shadow: var(--shadow); */
+.card-container-ext.hovered .card-container-int {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
 
+.card-container-ext {
+  width: 100%;
+  height: auto;
+  min-width: 205px;
+  max-width: 330px;
+}
+
+.card-container-int {
   box-shadow: var(--shadow);
   border-radius: 25px;
   border: none;
@@ -14,30 +24,32 @@
 }
 
 .card-imagen {
-  padding: 40px;
-  /* width: 175px;
-    height: 175px; */
-  /* width: 170px;
-    height: 170px; */
-  /* Img, ocupa la mitad de su contenedor */
+  /* padding: 13%;
+  min-width: 50%;
+  max-width: 51%;
+  height: 160px; */
 
-  width: 50%;
-  height: 170px;
+  padding: 40px;
+  width: 170px;
+  height: 160px;
 }
 
 .card-body {
   background-color: var(--white);
-
-  /* Hace que el cuerpo de la tarjeta ocupe todo el ancho de su contenedor */
-  /* width: 100%; 
-    padding: 20px; */
 }
 
 .card-titulo {
   font-family: "Open Sans", sans-serif;
-  font-weight: 900;
+  font-weight: bolder;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color: var(--blue);
-  font-size: 22px;
+  font-size: 120%;
+  height: 30px;
 }
 
 .dark-card .card-body {
