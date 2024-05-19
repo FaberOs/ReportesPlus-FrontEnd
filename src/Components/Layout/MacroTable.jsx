@@ -5,18 +5,23 @@ import SectionContainer from "../Common/SectionContainer.jsx";
 import ResponsiveTable from "./ResponsiveTable.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
 
-const MacroTable = ({ mes, anio }) => {
+import LoadSpineer from "../UI/LoaderSpinner.jsx";
+
+const MacroTable = ({ mes, anio, codigo }) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
   const [data, setData] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true); // controlar LoadSpinner
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:8080/api/v1/posgrados/reportemacro?mes=${mes}&anio=${anio}`;
+        const url = `http://localhost:8080/api/v1/posgrados/reportemacro?mes=${mes}&anio=${anio}&codigo=${codigo}`;
         const response = await axios.get(url);
         if (response.data && response.data.consolidados) {
           setData(response.data.consolidados);
+          setIsLoading(false); // Oculta LoadSpinner info. lista
         } else {
           setData([]);
         }
@@ -59,18 +64,41 @@ const MacroTable = ({ mes, anio }) => {
 
   return (
     <div
-      className={`d-flex justify-content-center ${
-        isDarkTheme ? "dark-theme" : ""
-      }`}
+      className={`d-flex justify-content-center ${isDarkTheme ? "dark-theme" : ""
+        }`}
     >
-      <div className="col-11">
+      <div className="col-11 ">
+
         <SectionContainer titulo="REPORTE MACRO" />
-        <div className="contenedor">
+
+        {/* <div className="contenedor d-flex justify-content-center " style={{width:"100%"}}>
+          
           <ResponsiveTable data={displayDataMacro} lista={columns} />
+        </div> */}
+
+        <div className="contenedor d-flex justify-content-center" style={{ width: "100%" }}>
+          {isLoading ?
+            <div  style={{ paddingBottom: "90px", paddingTop: "90px", display: "grid", placeItems: "center"}}>
+              <LoadSpineer />
+              <div className="texto-loader-spinner" style={{width: "100%"}}>
+              <h4> Consultando reporte, por favor espere... </h4>
+              </div>
+              
+            </div>
+            : <ResponsiveTable data={displayDataMacro} lista={columns} />}
         </div>
+
+
       </div>
     </div>
   );
 };
 
 export default MacroTable;
+
+/* 
+<div className="container-fluid">
+          <div className="row">
+            
+          </div>
+        </div> */

@@ -86,9 +86,8 @@ function ConsultMacro() {
               buttonText="CONSULTAR"
               tituloModal="Confirmación"
               contenidoModal={`Desea generar la consulta para Reporte Macro? Fecha: ${mes} ${anio}, Código: ${codigo}`}
-              rutaModal={`/consultar-macro/reporte-macro?mes=${encodeURIComponent(
-                mes
-              )}&anio=${encodeURIComponent(anio)}&codigo=${encodeURIComponent(
+              
+              rutaModal={`/consultar-macro/reporte-macro?mes=${encodeURIComponent(mes)}&anio=${encodeURIComponent(anio)}&codigo=${encodeURIComponent(
                 codigo
               )}`}
             />

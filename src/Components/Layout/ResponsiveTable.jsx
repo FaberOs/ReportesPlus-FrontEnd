@@ -58,7 +58,7 @@ function ResponsiveTable({ data, lista }) {
   };
 
   return (
-    <div className={`table-container ${isDarkTheme ? "dark-table" : ""}`}>
+    <div className={`table-container ${isDarkTheme ? "dark-table" : ""}`} style={{overflow: "hidden", width: "100%"}}>
       <Table
         responsive
         bordered
