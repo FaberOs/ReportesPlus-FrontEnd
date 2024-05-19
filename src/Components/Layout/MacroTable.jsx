@@ -71,19 +71,14 @@ const MacroTable = ({ mes, anio, codigo }) => {
 
         <SectionContainer titulo="REPORTE MACRO" />
 
-        {/* <div className="contenedor d-flex justify-content-center " style={{width:"100%"}}>
-          
-          <ResponsiveTable data={displayDataMacro} lista={columns} />
-        </div> */}
-
-        <div className="contenedor d-flex justify-content-center" style={{ width: "100%" }}>
+        <div className="contenedor d-flex justify-content-center">
           {isLoading ?
-            <div  style={{ paddingBottom: "90px", paddingTop: "90px", display: "grid", placeItems: "center"}}>
+            <div className="" style={{ paddingBottom: "90px", paddingTop: "90px", display: "grid", placeItems: "center" }}>
               <LoadSpineer />
-              <div className="texto-loader-spinner" style={{width: "100%"}}>
-              <h4> Consultando reporte, por favor espere... </h4>
+              <div className="texto-loader-spinner">
+                <h4> Consultando reporte, por favor espere... </h4>
               </div>
-              
+
             </div>
             : <ResponsiveTable data={displayDataMacro} lista={columns} />}
         </div>
@@ -95,10 +90,3 @@ const MacroTable = ({ mes, anio, codigo }) => {
 };
 
 export default MacroTable;
-
-/* 
-<div className="container-fluid">
-          <div className="row">
-            
-          </div>
-        </div> */
