@@ -5,9 +5,14 @@
   --dark: #000000;
   --light-gray: #ededed;
   --gray: #d9d9d9;
-  --dark-gray: #3c3c3b;
+  --dark-light-gray: #323234;
+  --dark-gray: #1b1b1d;
+  --input-gray: #706f6f;
   --white: #ffffff;
+  --white-content: #f6f6f6;
+  --white-interact: #ecf0ff;
   --blue: #000066;
+  --light-blue: #5056ac;
   --shadow: 10px 10px 25px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -29,14 +34,21 @@
   background-color: var(--blue);
 }
 
-body.UserConsult {
+body.Light {
   background-color: var(--gray);
 }
 
-body.TablaConsulta {
-  background-color: var(--gray);
+/* Estilos para el tema oscuro */
+body.Dark {
+  background-color: var(--dark-gray);
 }
 
-body.Login {
-  background-color: var(--gray);
+#Dark {
+  background-color: var(--dark-light-gray);
+  color: var(--white);
+}
+
+#Light {
+  background-color: var(--white-content);
+  color: var(--dark);
 }

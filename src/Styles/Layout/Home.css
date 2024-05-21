@@ -1,0 +1,40 @@
+.home-cards-container {
+  box-shadow: var(--shadow);
+  border: none;
+  background: #fff;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 25px;
+  overflow: hidden;
+  padding-bottom: 4.5%;
+  width: 80%;
+}
+
+.home-titulo-linea {
+  border-bottom: 2px solid var(--gray);
+  padding-bottom: 30px;
+}
+
+.home-titulo {
+  padding: 40px;
+  padding-bottom: 15px;
+}
+
+.home-titulo-texto {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  color: var(--blue);
+  font-size: 26px;
+  word-break: none;
+  white-space: nowrap;
+}
+
+.dark-home .home-cards-container {
+  background-color: var(--dark-light-gray);
+}
+
+.dark-home .home-titulo-texto {
+  color: var(--white);
+}

@@ -1,13 +1,47 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../Styles/Layout/Header.css"; // Importar estilos CSS para el Header
+import { useThemeContext } from "../../ThemeContext";
+import ThemeToggler from "../Features/ThemeToggler";
+import UserMenu from "../Features/UserMenu";
 
-import logoU from "../../Assets/LogoUnicauca.svg";
-import EclipseIcon from "../../Assets/eclipse.svg";
+import logoULight from "../../Assets/LogoUnicauca.svg";
+import logoUDark from "../../Assets/LogoUnicauca-white.svg";
+import SimpleButton from "../../Components/UI/SimpleButton.jsx";
+
+
 
 const Header = () => {
+  //const sesion = useState(localStorage.getItem("User"));
+  const navigate = useNavigate();
   const headerRef = useRef(null);
+  const { contextTheme } = useThemeContext();
+
+  const ActualizacionSesion = () => {
+    //const sesion = useState(localStorage.getItem("User"));
+    
+    const handleSubmit = () => {
+      localStorage.setItem("User",0);
+      navigate("/login");
+    };
+
+    if (localStorage.getItem("User") == 1 || localStorage.getItem("User") == 4)  {
+      return (
+        <div>
+            <UserMenu /> 
+        </div>
+      );
+    } else {
+      return (
+        <div>
+            <SimpleButton buttonText="INICIAR SESIÓN" onClick={handleSubmit} />
+        </div>
+      );
+    }    
+  };
 
   useEffect(() => {
+    //alert(localStorage.getItem("User"));
     const headerHeight = headerRef.current.offsetHeight;
     document.documentElement.style.setProperty(
       "--header-height",
@@ -16,15 +50,19 @@ const Header = () => {
   }, []);
 
   return (
-    <header ref={headerRef} className="custom-header">
+    <header ref={headerRef} className="custom-header" id={contextTheme}>
       <div className="logo-container">
         <a href="/">
-          <img className="logoU" src={logoU} alt="logoUnicauca" />
-          
+          <img
+            className="logoU"
+            src={contextTheme === "Light" ? logoULight : logoUDark}
+            alt="logoUnicauca"
+          />
         </a>
       </div>
-      <div className="icon-container">
-        <img src={EclipseIcon} alt="Icono" width="30" height="30" />
+      <div className="options-container">
+        <ThemeToggler />       
+        <ActualizacionSesion />        
       </div>
     </header>
   );

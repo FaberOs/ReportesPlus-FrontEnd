@@ -1,3 +1,5 @@
+/* ModalGeneric.css */
+
 .confirmModal {
   font-family: "Open Sans", sans-serif;
 }
@@ -22,6 +24,7 @@
   margin-bottom: 4%;
   margin-left: 5%;
 }
+
 .modalBody {
   font-size: 16px;
   color: var(--blue);
@@ -46,4 +49,13 @@
     height: 40px;
     width: 40px;
   }
+}
+
+/* Dark Theme Styles */
+.dark-theme .modal-content {
+  background-color: var(--dark-light-gray);
+}
+
+.dark-text {
+  color: var(--white);
 }

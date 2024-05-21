@@ -2,8 +2,8 @@ import { useState } from "react";
 import PropTypes from "prop-types"; // Importa PropTypes para validar las props
 import "../../Styles/Components/SimpleButton.css";
 
-import ToastNotify from "../Common/ToastNotify.jsx";
 import ModalGeneric from "../Common/Modal.jsx";
+import { useThemeContext } from "../../ThemeContext.jsx";
 
 const ModalButton = ({
   buttonText,
@@ -16,12 +16,18 @@ const ModalButton = ({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const { contextTheme } = useThemeContext();
+  const isDarkTheme = contextTheme === "Dark";
+
   return (
     <>
-      <button className="btn-button" type="submit" onClick={handleShow}>
-        {buttonText}        
+      <button
+        className={`btn-button ${isDarkTheme ? "dark-SimpleButton" : ""}`}
+        type="submit"
+        onClick={handleShow}
+      >
+        {buttonText}
       </button>
-      <ToastNotify accionar={true} tipo='C'/> 
       <ModalGeneric
         show={show}
         handleClose={handleClose}

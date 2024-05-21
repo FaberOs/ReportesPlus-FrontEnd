@@ -11,9 +11,36 @@
 .textInput {
   font-family: "Open Sans", sans-serif; /* Fuente Open Sans */
   color: var(--dark-gray); /* Color gris para el texto */
-  border: 2px solid var(--blue); /* Borde azul */
   border-radius: 25px; /* Bordes redondos */
   padding: 8px 12px; /* Espaciado interno */
   margin-bottom: 15px;
   width: 100%;
+  background-color: var(--white);
+  border: 2px solid var(--light-gray); /* Borde transparente */
+  transition: border 0.3s; /* Agrega una transición para el borde */
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+/* Dark Theme Styles */
+.dark-text {
+  color: var(--white);
+}
+
+.dark-input {
+  color: var(--white);
+  background-color: var(--input-gray);
+  border: 2px solid var(--input-gray); /* Borde transparente */
+}
+
+.dark-input:focus {
+  outline: none;
+  border-color: var(--white);
+}
+
+.dark-input::placeholder {
+  color: var(--white);
 }

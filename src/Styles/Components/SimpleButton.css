@@ -24,3 +24,15 @@
   border-color: var(--blue);
   color: var(--blue);
 }
+
+.dark-SimpleButton {
+  background: var(--light-blue);
+  border-color: var(--light-blue);
+  color: var(--white);
+}
+
+.dark-SimpleButton:hover {
+  background-color: var(--white-interact);
+  border-color: var(--white-interact);
+  color: var(--blue);
+}
