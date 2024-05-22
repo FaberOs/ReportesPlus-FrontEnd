@@ -44,10 +44,10 @@ const ModalGeneric = ({
             <SimpleButton
               buttonText="No"
               onClick={handleClose}
-              darkTheme={isDarkTheme}
+              variant="outline"
             />
             <Link to={rutaConfirmacion} style={{ textDecoration: "none" }}>
-              <SimpleButton buttonText="Sí" darkTheme={isDarkTheme} />
+              <SimpleButton buttonText="Sí" variant="default" />
             </Link>
           </div>
         </div>

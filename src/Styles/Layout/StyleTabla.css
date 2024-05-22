@@ -55,3 +55,17 @@
   background-color: var(--light-blue);
   border-color: var(--light-blue);
 }
+
+.texto-loader-spinner {
+  color: var(--blue);
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.dark-theme .texto-loader-spinner {
+  color: var(--white);
+}
