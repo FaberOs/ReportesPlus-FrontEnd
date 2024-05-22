@@ -31,7 +31,15 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+localStorage.setItem("User",0);
+// "User" => 0  sin sesion
+// "User" => 1  se inicia sesion
+// "User" => 2  sesion cerrada
+// "User" => 3  
+// "User" => 4  mantiene sesion
+
 function App() {
+
   return (
     <>
       <Routes>

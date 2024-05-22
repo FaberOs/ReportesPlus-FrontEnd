@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useThemeContext } from "../ThemeContext.jsx";
 
@@ -10,23 +10,47 @@ import imgCard1 from "../Assets/SubjectIconWhite.svg";
 import imgCard2 from "../Assets/CollegeIconWhite.svg";
 import imgCard3 from "../Assets/DependenceIconWhite.svg";
 import SimpleButton from "../Components/UI/SimpleButton.jsx";
+import ToastNotify from "../Components/Common/ToastNotify.jsx";
 import "../Styles/Layout/Home.css";
+
+
+const EstadoSesion = () => {
+    
+  return (
+    <div>
+      <Header />
+    </div>
+  );
+};
+
 
 function Home() {
   const location = useLocation();
   const { contextTheme } = useThemeContext();
-  const isDarkTheme = contextTheme === "Dark";
+  const isDarkTheme = contextTheme === "Dark";  
 
-  useEffect(() => {
+  useEffect((e) => {
+
     document.body.className = isDarkTheme ? "Dark" : "Light";
   }, [location, isDarkTheme]);
 
+  const Notificacion = () => {
+    if(localStorage.getItem("User") == 1){
+      localStorage.setItem("User",4);
+      return(
+        <ToastNotify accionar={true} tipo={"S"} msj={"Bienvenido sesion iniciada."}/>
+      );
+    }
+  };
+
+  
   return (
     <div>
-      <header>
-        <Header />
+      <header>        
+        <EstadoSesion /> 
       </header>
-      <main>
+      <main>       
+        <Notificacion />
         <div
           className={`container-fluid d-flex align-items-center justify-content-center mt-5 mb-5 ${
             isDarkTheme ? "dark-home" : ""
