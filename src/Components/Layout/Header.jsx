@@ -1,5 +1,4 @@
-import { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import "../../Styles/Layout/Header.css"; // Importar estilos CSS para el Header
 import { useThemeContext } from "../../ThemeContext";
 import ThemeToggler from "../Features/ThemeToggler";
@@ -7,41 +6,12 @@ import UserMenu from "../Features/UserMenu";
 
 import logoULight from "../../Assets/LogoUnicauca.svg";
 import logoUDark from "../../Assets/LogoUnicauca-white.svg";
-import SimpleButton from "../../Components/UI/SimpleButton.jsx";
-
-
 
 const Header = () => {
-  //const sesion = useState(localStorage.getItem("User"));
-  const navigate = useNavigate();
   const headerRef = useRef(null);
   const { contextTheme } = useThemeContext();
 
-  const ActualizacionSesion = () => {
-    //const sesion = useState(localStorage.getItem("User"));
-    
-    const handleSubmit = () => {
-      localStorage.setItem("User",0);
-      navigate("/login");
-    };
-
-    if (localStorage.getItem("User") == 1 || localStorage.getItem("User") == 4)  {
-      return (
-        <div>
-            <UserMenu /> 
-        </div>
-      );
-    } else {
-      return (
-        <div>
-            <SimpleButton buttonText="INICIAR SESIÓN" onClick={handleSubmit} />
-        </div>
-      );
-    }    
-  };
-
   useEffect(() => {
-    //alert(localStorage.getItem("User"));
     const headerHeight = headerRef.current.offsetHeight;
     document.documentElement.style.setProperty(
       "--header-height",
@@ -61,8 +31,8 @@ const Header = () => {
         </a>
       </div>
       <div className="options-container">
-        <ThemeToggler />       
-        <ActualizacionSesion />        
+        <ThemeToggler />
+        <UserMenu />
       </div>
     </header>
   );

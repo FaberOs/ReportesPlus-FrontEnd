@@ -22,8 +22,7 @@ const UserMenu = () => {
   };
 
   const handleLogout = () => {
-    localStorage.setItem("User",2);
-    //console.log("Sesión cerrada por inactividad.");
+    console.log("Sesión cerrada por inactividad.");
     navigate('/login'); // o la ruta que corresponda a tu página de login
 
   };

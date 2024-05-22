@@ -8,24 +8,8 @@ import Footer from "../Components/Layout/Footer.jsx";
 import ConsultForm from "../Components/Layout/ConsultForm";
 import TextInput from "../Components/UI/TextInput.jsx";
 import SimpleButton from "../Components/UI/SimpleButton.jsx";
-import ToastNotify from "../Components/Common/ToastNotify.jsx";
 
 import LoginPic from "../Assets/AdminLoginPic.png";
-
-
-
-
-
-const EstadoSesion = () => {
-    
-  return (
-    <div>
-      <Header />
-    </div>
-  );
-};
-
-
 
 function UserConsult() {
   const location = useLocation();
@@ -35,22 +19,16 @@ function UserConsult() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [timer, setTimer] = useState(null);
-  const [estado, setEstado] = useState("");
-  const [accionT, setAccionT] = useState("");
-  const [message, setMessage] = useState("");
- 
 
   useEffect(() => {
     document.body.className = isDarkTheme ? "Dark" : "Light";
   }, [location, isDarkTheme]);
 
-  const handleUsernameChange = (event) => {    
-    setAccionT(false);
+  const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
-    setAccionT(false);
     setPassword(event.target.value);
   };
 
@@ -62,34 +40,22 @@ function UserConsult() {
         clave: password,
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      localStorage.setItem("User",1);
-      setEstado("S");
-      setAccionT(true);
-      navigate("/home"); // Redirigir a la ruta de consulta      
+      navigate("/home"); // Redirigir a la ruta de consulta
     } catch (error) {
       console.error("Error de autenticación", error);
       if (error.response && error.response.status === 401) {
-        setEstado("E");
-        setAccionT(true);
-        setMessage("Credenciales invalidas");
         alert("Credenciales inválidas"); // Notificar al usuario
       } else {
-        setEstado("E");
-        setAccionT(true);       
-        setMessage("Error en el servidor");
-        //alert("Error en el servidor");
+        alert("Error en el servidor");
       }
     }
   };
 
   const handleLogout = () => {
-    setEstado("E");
-    setAccionT(true);       
-    setMessage("Error en el servidor");
-    //console.log("Sesión cerrada por inactividad.");
+    console.log("Sesión cerrada por inactividad.");
     navigate("/login"); // o la ruta que corresponda a tu página de login
   };
-/*
+
   useEffect(() => {
     const events = ["click", "load", "keydown"];
 
@@ -111,55 +77,37 @@ function UserConsult() {
       clearTimeout(timer);
     };
   }, [timer]);
-*/
-  const Notificacion = () => {  
-
-    //alert(localStorage.getItem("User"));
-
-    if(localStorage.getItem("User") == 2){
-      setEstado("S");
-      setAccionT(true);
-      setMessage("sesion cerrada");
-    }
-    return(
-      <ToastNotify accionar={accionT} tipo={estado} msj={message}/>
-    );
-    
-  };
 
   return (
     <div>
       <header>
-        <EstadoSesion /> 
+        <Header />
       </header>
       <main>
-        <>  
-          <ConsultForm
-            imagen={LoginPic}
-            titulo="Inicio de Sesión"
-            input1={
-              <TextInput
-                label="Usuario"
-                value={username}
-                onChange={handleUsernameChange}
-                placeholder=""
-              />
-            }
-            input2={
-              <TextInput
-                label="Contraseña"
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-                placeholder=""
-              />
-            }
-            boton={
-              <SimpleButton buttonText="INICIAR SESIÓN" onClick={handleSubmit} />
-            }
-          />
-          <Notificacion />
-        </>        
+        <ConsultForm
+          imagen={LoginPic}
+          titulo="Inicio de Sesión"
+          input1={
+            <TextInput
+              label="Usuario"
+              value={username}
+              onChange={handleUsernameChange}
+              placeholder=""
+            />
+          }
+          input2={
+            <TextInput
+              label="Contraseña"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder=""
+            />
+          }
+          boton={
+            <SimpleButton buttonText="INICIAR SESIÓN" onClick={handleSubmit} />
+          }
+        />
       </main>
       <footer>
         <Footer />
