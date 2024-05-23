@@ -10,9 +10,12 @@ const TextInput = ({ label, type, placeholder, onChange, required }) => {
 
   const handleChange = (e) => {
     const { value } = e.target;
+    console.log("Value: " , value);
     setInputValue(value);
+    console.log("Value 1: " , value);
     if (onChange) {
       onChange(value);
+      console.log("Value 2: " , value);
     }
   };
 

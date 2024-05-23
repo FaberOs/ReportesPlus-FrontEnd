@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useThemeContext } from "../ThemeContext.jsx";
+import { useAuth } from "../Context/AuthProvider.jsx";
 
 import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx";
@@ -12,10 +13,11 @@ import ToastNotify from "../Components/Common/ToastNotify.jsx";
 
 import LoginPic from "../Assets/AdminLoginPic.png";
 
-const EstadoSesion = () => {
+const EstadoSesion = ({ username }) => {
+  console.log("Estado sesion username: ", username);
   return (
     <div>
-      <Header />
+      <Header username={username} />
     </div>
   );
 };
@@ -23,6 +25,7 @@ const EstadoSesion = () => {
 function Login() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { login } = useAuth();
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
   const [username, setUsername] = useState("");
@@ -53,9 +56,7 @@ function Login() {
         clave: password,
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      localStorage.setItem("User", 1);
-      setEstado("S");
-      setAccionT(true);
+      login(); // Actualiza el estado de autenticación
       navigate("/home"); // Redirigir a la ruta de consulta
     } catch (error) {
       console.error("Error de autenticación", error);
@@ -68,7 +69,6 @@ function Login() {
         setEstado("E");
         setAccionT(true);
         setMessage("Error en el servidor");
-        //alert("Error en el servidor");
       }
     }
   };
@@ -81,8 +81,6 @@ function Login() {
   };
 
   const Notificacion = () => {
-    //alert(localStorage.getItem("User"));
-
     if (localStorage.getItem("User") == 2) {
       setEstado("S");
       setAccionT(true);
@@ -94,7 +92,9 @@ function Login() {
   return (
     <div>
       <header>
-        <EstadoSesion />
+      <div>
+      <Header username={username} />
+      </div>
       </header>
       <main>
         <>
@@ -104,8 +104,7 @@ function Login() {
             input1={
               <TextInput
                 label="Usuario"
-                value={username}
-                onChange={handleUsernameChange}
+                onChange={(value) => setUsername(value)}
                 placeholder=""
                 required={true}
               />
@@ -114,8 +113,7 @@ function Login() {
               <TextInput
                 label="Contraseña"
                 type="password"
-                value={password}
-                onChange={handlePasswordChange}
+                onChange={(value) => setPassword(value)}
                 placeholder=""
                 required={true}
               />
