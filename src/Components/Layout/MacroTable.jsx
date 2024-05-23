@@ -4,8 +4,8 @@ import "../../Styles/Layout/StyleTabla.css";
 import SectionContainer from "../Common/SectionContainer.jsx";
 import ResponsiveTable from "./ResponsiveTable.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
-
 import LoadSpineer from "../UI/LoaderSpinner.jsx";
+
 
 const MacroTable = ({ mes, anio, codigo }) => {
   const { contextTheme } = useThemeContext();
@@ -82,8 +82,6 @@ const MacroTable = ({ mes, anio, codigo }) => {
             </div>
             : <ResponsiveTable data={displayDataMacro} lista={columns} />}
         </div>
-
-
       </div>
     </div>
   );

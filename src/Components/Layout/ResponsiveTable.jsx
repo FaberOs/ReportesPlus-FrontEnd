@@ -5,9 +5,18 @@ import Pagination from "react-bootstrap/Pagination";
 import "../../Styles/Components/Table.css";
 import { useThemeContext } from "../../ThemeContext";
 
+import { Modal, ModalTitle, ModalHeader, ModalBody} from "react-bootstrap";  // modal select row
+
 function ResponsiveTable({ data, lista }) {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
+
+  const [modalInfo, setModalInfo] = useState([]);  // info modal ,vacía
+  const [showModal, setshowModal] = useState(false); // activar modal
+
+  const [show, setShow] = useState(false); // cierre/apertura, estado modal
+  const handleClose = () => setShow(false); // cierre modal
+  const handleShow = () => setShow(true); // apertura modal
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -17,6 +26,43 @@ function ResponsiveTable({ data, lista }) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
+
+
+  const ModalContent = () => {
+
+    return (
+      <Modal
+        centered
+        show={show}
+        onHide={handleClose} 
+        size="lg"
+        className="modal-custom">
+        <ModalHeader closeButton style={{ marginRight: "3%" }}>
+          <ModalTitle className="modal-title">Información Seleccionada</ModalTitle>
+        </ModalHeader>
+
+        <ModalBody className="modal-body" >
+          {modalInfo.map((info, index) => (
+            <div key={index}>
+              <p><strong style={{ color: "#000066" }}>{lista[index]}:</strong> {info}</p>
+            </div>
+          ))}
+        </ModalBody>
+      </Modal>
+    );
+  }
+
+  const identifyRowClick = (event) => {
+    // Busca la fila más cercana desde el elemento clicado
+    const tr = event.target.closest('tr');
+    if (tr) { // si encontró fila
+      // Extrae los datos de las celdas dentro de la fila
+      const rowData = Array.from(tr.children).map(cell => cell.textContent);
+      setModalInfo(rowData); // guardar información de la fila (array)
+      setshowModal(handleShow); // activar modal
+    }
+  };
+
 
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -53,12 +99,12 @@ function ResponsiveTable({ data, lista }) {
         </Pagination.Item>
       );
     }
-
     return pages;
   };
 
   return (
-    <div className={`table-container ${isDarkTheme ? "dark-table" : ""}`} style={{overflow: "hidden", width: "100%"}}>
+    <div className={`table-container ${isDarkTheme ? "dark-table" : ""}`} style={{ overflow: "hidden", width: "100%" }}>
+
       <Table
         responsive
         bordered
@@ -68,12 +114,20 @@ function ResponsiveTable({ data, lista }) {
         <thead>
           <tr>
             {lista.map((l, index) => (
-              <th key={index}> {l} </th>
+              <td key={index}> {l} </td>
             ))}
           </tr>
-        </thead>
-        <tbody>{currentData}</tbody>
+        </thead >
+
+        <tbody onClick={identifyRowClick}> 
+          {currentData.map((row) => {
+            //console.log(row);  Consolaa
+            return row;
+          })}
+        </tbody>
+
       </Table>
+
       {data.length > itemsPerPage && (
         <Pagination className={`pagination ${isDarkTheme ? "dark-pager" : ""}`}>
           <Pagination.Prev
@@ -89,6 +143,9 @@ function ResponsiveTable({ data, lista }) {
           />
         </Pagination>
       )}
+
+      {show ? <ModalContent /> : null} {/* condicion renderiza Modal  */}
+
     </div>
   );
 }
