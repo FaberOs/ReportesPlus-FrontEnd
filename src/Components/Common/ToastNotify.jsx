@@ -8,23 +8,28 @@ import ImagenW from "../../Assets/Advertencia.svg";
 import ImagenE from "../../Assets/Error.svg";
 import ImagenS from "../../Assets/Success.svg";
 import ImagenU from "../../Assets/User.svg";
+import Cookies from 'js-cookie';
 
 
 
 const ToastNotify = ({ accionar, tipo, msj }) => {
 
   const [showA, setShowA] = useState(accionar);
-  const [tipo1,setTipo] = useState(tipo);
   const toggleShowA = () => {
     setShowA(!showA);
     setTipo("");
   };
 
   const TipoToast = () => {
-
+/*
     if(localStorage.getItem("User") == 2){
       //alert('cambio',localStorage.getItem("User"));
       localStorage.setItem("User",0);
+    }*/
+    
+    //uso cookies
+    if(Cookies.get('user') == 2){
+      Cookies.set('user', 0, { path: '/' });
     }
   
     if (tipo == "I"){
@@ -187,10 +192,3 @@ const ToastNotify = ({ accionar, tipo, msj }) => {
 }
 
 export default ToastNotify;
-/*
-<ToastContainer
-      position="position-absolute"
-      className="top-0 end-0 p-5"
-      style={{ zIndex: 1 }}
-    >
-    </ToastContainer>*/

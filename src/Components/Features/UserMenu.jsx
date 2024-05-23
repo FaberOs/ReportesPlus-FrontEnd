@@ -3,6 +3,7 @@ import { useThemeContext } from "../../ThemeContext";
 import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 import {
   faUserCircle,
   faSignOutAlt,
@@ -21,8 +22,16 @@ const UserMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleLogout = () => {
+  /*const handleLogout = () => {
     localStorage.setItem("User",2);
+    //console.log("Sesión cerrada por inactividad.");
+    navigate('/login'); // o la ruta que corresponda a tu página de login
+
+  };*/
+
+  //uso de cookies
+  const handleLogout = () => {
+    Cookies.set('user', 2, { path: '/' });
     //console.log("Sesión cerrada por inactividad.");
     navigate('/login'); // o la ruta que corresponda a tu página de login
 

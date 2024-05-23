@@ -8,15 +8,14 @@ import UserMenu from "../Features/UserMenu";
 import logoULight from "../../Assets/LogoUnicauca.svg";
 import logoUDark from "../../Assets/LogoUnicauca-white.svg";
 import SimpleButton from "../../Components/UI/SimpleButton.jsx";
-
+import Cookies from 'js-cookie';
 
 
 const Header = () => {
-  //const sesion = useState(localStorage.getItem("User"));
   const navigate = useNavigate();
   const headerRef = useRef(null);
   const { contextTheme } = useThemeContext();
-
+/*
   const ActualizacionSesion = () => {
     //const sesion = useState(localStorage.getItem("User"));
     
@@ -39,9 +38,63 @@ const Header = () => {
       );
     }    
   };
+*/
+
+  //uso de cookies
+  const ActualizacionSesion = () => {
+    
+    const handleSubmit = () => {
+      Cookies.remove('user');
+      Cookies.set('user', 0, { path: '/' });
+      navigate("/login");
+    };
+
+    if (Cookies.get('user') == 1 || Cookies.get('user') == 4)  {
+      return (
+        <div>
+            <UserMenu /> 
+        </div>
+      );
+    } else {
+      return (
+        <div>
+            <SimpleButton buttonText="INICIAR SESIÓN" onClick={handleSubmit} />
+        </div>
+      );
+    }    
+  };
+
+  const Logouniversity = () => {
+    if (Cookies.get('user') == 1 || Cookies.get('user') == 4)  {
+      return (
+        <div>
+          <a href="/home">
+            <img
+              className="logoU"
+              src={contextTheme === "Light" ? logoULight : logoUDark}
+              alt="logoUnicauca"
+            />
+          </a>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <a href="/login">
+            <img
+              className="logoU"
+              src={contextTheme === "Light" ? logoULight : logoUDark}
+              alt="logoUnicauca"
+            />
+          </a>
+        </div>
+      );
+    }
+  };
+
+  
 
   useEffect(() => {
-    //alert(localStorage.getItem("User"));
     const headerHeight = headerRef.current.offsetHeight;
     document.documentElement.style.setProperty(
       "--header-height",
@@ -52,13 +105,7 @@ const Header = () => {
   return (
     <header ref={headerRef} className="custom-header" id={contextTheme}>
       <div className="logo-container">
-        <a href="/">
-          <img
-            className="logoU"
-            src={contextTheme === "Light" ? logoULight : logoUDark}
-            alt="logoUnicauca"
-          />
-        </a>
+        <Logouniversity />
       </div>
       <div className="options-container">
         <ThemeToggler />       

@@ -12,6 +12,7 @@ import imgCard3 from "../Assets/DependenceIconWhite.svg";
 import SimpleButton from "../Components/UI/SimpleButton.jsx";
 import ToastNotify from "../Components/Common/ToastNotify.jsx";
 import "../Styles/Layout/Home.css";
+import Cookies from 'js-cookie';
 
 
 const EstadoSesion = () => {
@@ -34,6 +35,7 @@ function Home() {
     document.body.className = isDarkTheme ? "Dark" : "Light";
   }, [location, isDarkTheme]);
 
+  /*
   const Notificacion = () => {
     if(localStorage.getItem("User") == 1){
       localStorage.setItem("User",4);
@@ -42,7 +44,17 @@ function Home() {
       );
     }
   };
+  */
 
+  //uso cookies
+  const Notificacion = () => {
+    if(Cookies.get('user') == 1){
+      Cookies.set('user', 4, { path: '/' });
+      return(
+        <ToastNotify accionar={true} tipo={"S"} msj={"Bienvenido sesion iniciada."}/>
+      );
+    }
+  };
   
   return (
     <div>

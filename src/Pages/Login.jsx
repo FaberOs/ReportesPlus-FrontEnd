@@ -9,10 +9,8 @@ import ConsultForm from "../Components/Layout/ConsultForm";
 import TextInput from "../Components/UI/TextInput.jsx";
 import SimpleButton from "../Components/UI/SimpleButton.jsx";
 import ToastNotify from "../Components/Common/ToastNotify.jsx";
-
+import Cookies from 'js-cookie';
 import LoginPic from "../Assets/AdminLoginPic.png";
-
-
 
 
 
@@ -62,7 +60,9 @@ function UserConsult() {
         clave: password,
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      localStorage.setItem("User",1);
+      //localStorage.setItem("User",1);
+      alert("si");
+      Cookies.set('user', 1, { path: '/' });
       setEstado("S");
       setAccionT(true);
       navigate("/home"); // Redirigir a la ruta de consulta      
@@ -113,10 +113,21 @@ function UserConsult() {
   }, [timer]);
 */
   const Notificacion = () => {  
-
+    /*
     //alert(localStorage.getItem("User"));
-
+    
     if(localStorage.getItem("User") == 2){
+      setEstado("S");
+      setAccionT(true);
+      setMessage("sesion cerrada");
+    }
+    return(
+      <ToastNotify accionar={accionT} tipo={estado} msj={message}/>
+    );
+    */
+
+    //con cookies
+    if(Cookies.get('user') == 2){
       setEstado("S");
       setAccionT(true);
       setMessage("sesion cerrada");

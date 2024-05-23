@@ -5,6 +5,7 @@ import { useThemeContext } from "../ThemeContext.jsx";
 import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx";
 import ConsultForm from "../Components/Layout/ConsultForm.jsx";
+//import ToastNotify from "../Components/Common/ToastNotify.jsx";
 
 import TextInput from "../Components/UI/TextInput.jsx";
 import MonthPicker from "../Components/UI/MonthPicker.jsx";
@@ -20,6 +21,10 @@ function ConsultPos() {
   const [mes, setMes] = useState("");
   const [anio, setAnio] = useState("");
   const [codigo, setCodigo] = useState("");
+  //toast
+  //const [estado, setEstado] = useState("");
+  //const [accionT, setAccionT] = useState("");
+  //const [message, setMessage] = useState("");
 
   useEffect(() => {
     document.body.className = isDarkTheme ? "Dark" : "Light";
@@ -48,6 +53,9 @@ function ConsultPos() {
           setMes(meses[mesNumerico - 1]);
           setAnio(parts[1]);
         } else {
+          //setEstado("E");
+          //setAccionT(true);
+          //setMessage("Formato de fecha incorrecto o mes inválido");
           console.error("Formato de fecha incorrecto o mes inválido");
         }
       }
@@ -57,6 +65,14 @@ function ConsultPos() {
   useEffect(() => {
     console.log("Estado actualizado: ", { mes, anio, codigo });
   }, [mes, anio, codigo]);
+/*
+  const Notificacion = () => {  
+    
+    return(
+      <ToastNotify accionar={accionT} tipo={estado} msj={message}/>
+    );
+    
+  };*/
 
   return (
     <div>
