@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useThemeContext } from "../ThemeContext.jsx";
+import { useAuth } from "../Context/AuthProvider.jsx";
 
 import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx";
@@ -9,40 +10,35 @@ import ConsultForm from "../Components/Layout/ConsultForm";
 import TextInput from "../Components/UI/TextInput.jsx";
 import SimpleButton from "../Components/UI/SimpleButton.jsx";
 import ToastNotify from "../Components/Common/ToastNotify.jsx";
-import Cookies from 'js-cookie';
+
 import LoginPic from "../Assets/AdminLoginPic.png";
 
-
-
-const EstadoSesion = () => {
-    
+const EstadoSesion = ({ username }) => {
+  console.log("Estado sesion username: ", username);
   return (
     <div>
-      <Header />
+      <Header username={username} />
     </div>
   );
 };
 
-
-
-function UserConsult() {
+function Login() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { login } = useAuth();
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [timer, setTimer] = useState(null);
   const [estado, setEstado] = useState("");
   const [accionT, setAccionT] = useState("");
   const [message, setMessage] = useState("");
- 
 
   useEffect(() => {
     document.body.className = isDarkTheme ? "Dark" : "Light";
   }, [location, isDarkTheme]);
 
-  const handleUsernameChange = (event) => {    
+  const handleUsernameChange = (event) => {
     setAccionT(false);
     setUsername(event.target.value);
   };
@@ -60,116 +56,84 @@ function UserConsult() {
         clave: password,
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      //localStorage.setItem("User",1);
-      Cookies.set('user', 1, { path: '/' });
-      setEstado("S");
-      setAccionT(true);
-      navigate("/home"); // Redirigir a la ruta de consulta      
+      login(); // Actualiza el estado de autenticación
+      navigate("/home"); // Redirigir a la ruta de consulta
     } catch (error) {
       console.error("Error de autenticación", error);
       if (error.response && error.response.status === 401) {
+        localStorage.setItem("User",3);
         setEstado("E");
         setAccionT(true);
         setMessage("Credenciales invalidas");
         alert("Credenciales inválidas"); // Notificar al usuario
       } else {
+        localStorage.setItem("User",3);
         setEstado("E");
-        setAccionT(true);       
+        setAccionT(true);
         setMessage("Error en el servidor");
-        //alert("Error en el servidor");
       }
     }
   };
 
   const handleLogout = () => {
     setEstado("E");
-    setAccionT(true);       
+    setAccionT(true);
     setMessage("Error en el servidor");
-    //console.log("Sesión cerrada por inactividad.");
     navigate("/login"); // o la ruta que corresponda a tu página de login
   };
-/*
-  useEffect(() => {
-    const events = ["click", "load", "keydown"];
 
-    const resetTimer = () => {
-      clearTimeout(timer);
-      setTimer(setTimeout(handleLogout, 30 * 60 * 1000)); // 30 minutos
-    };
-
-    for (const event of events) {
-      window.addEventListener(event, resetTimer);
-    }
-
-    resetTimer();
-
-    return () => {
-      for (const event of events) {
-        window.removeEventListener(event, resetTimer);
-      }
-      clearTimeout(timer);
-    };
-  }, [timer]);
-*/
-  const Notificacion = () => {  
-    /*
-    //alert(localStorage.getItem("User"));
-    
-    if(localStorage.getItem("User") == 2){
+  const Notificacion = () => {
+    if (localStorage.getItem("User") == 2) {    
       setEstado("S");
       setAccionT(true);
-      setMessage("sesion cerrada");
+      setMessage("sesion cerrada");    
+      localStorage.setItem("User",3);       
+    }else if(localStorage.getItem("User") == 3){
+      localStorage.setItem("User",0);
+      return <ToastNotify accionar={accionT} tipo={estado} msj={message} />;
     }
-    return(
-      <ToastNotify accionar={accionT} tipo={estado} msj={message}/>
-    );
-    */
-
-    //con cookies
-    if(Cookies.get('user') == 2){
-      setEstado("S");
-      setAccionT(true);
-      setMessage("sesion cerrada");
-    }
-    return(
-      <ToastNotify accionar={accionT} tipo={estado} msj={message}/>
-    );
     
   };
 
   return (
     <div>
       <header>
-        <EstadoSesion /> 
+      <div>
+      <Header username={username} />
+      </div>
       </header>
       <main>
-        <>  
+        <>
           <ConsultForm
             imagen={LoginPic}
             titulo="Inicio de Sesión"
             input1={
               <TextInput
                 label="Usuario"
-                value={username}
-                onChange={handleUsernameChange}
+                onChange={(value) => setUsername(value)}
                 placeholder=""
+                required={true}
               />
             }
             input2={
               <TextInput
                 label="Contraseña"
                 type="password"
-                value={password}
-                onChange={handlePasswordChange}
+                onChange={(value) => setPassword(value)}
                 placeholder=""
+                required={true}
               />
             }
             boton={
-              <SimpleButton buttonText="INICIAR SESIÓN" onClick={handleSubmit} />
+              <SimpleButton
+                buttonText="INICIAR SESIÓN"
+                onClick={handleSubmit}
+                variant="default"
+              />
             }
           />
           <Notificacion />
-        </>        
+        </>
       </main>
       <footer>
         <Footer />
@@ -178,4 +142,4 @@ function UserConsult() {
   );
 }
 
-export default UserConsult;
+export default Login;

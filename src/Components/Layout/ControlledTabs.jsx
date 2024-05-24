@@ -27,7 +27,9 @@ function ControlledTabs({ mes, anio, codigo }) {
 
     const fetchGastos = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/posgrados/reporte/gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`);
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/posgrados/reporte/gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`
+        );
         setGastos(response.data.listaGastos || []);
       } catch (error) {
         console.error("Error fetching gastos: ", error);
@@ -93,24 +95,25 @@ function ControlledTabs({ mes, anio, codigo }) {
     </tr>
   ));
 
-  const displayDataConsolidado = consolidado ? [
-    <tr key="consolidado">
-      <td>{consolidado.codigoPosgrado}</td>
-      <td>{consolidado.nombrePosgrado}</td>
-      <td>{consolidado.total_ingresos.toLocaleString()}</td>
-      <td>{consolidado.total_descuentos.toLocaleString()}</td>
-      <td>{consolidado.total_neto.toLocaleString()}</td>
-      <td>{consolidado.contribucion.toLocaleString()}</td>
-      <td>{consolidado.total_disponible.toLocaleString()}</td>
-      <td>{consolidado.gastos_certificados.toLocaleString()}</td>
-      <td>{consolidado.saldo.toLocaleString()}</td>
-    </tr>
-  ] : [
-    <tr>
-      <td colSpan="9">No data available</td>
-    </tr>
-  ];
-  
+  const displayDataConsolidado = consolidado
+    ? [
+        <tr key="consolidado">
+          <td>{consolidado.codigoPosgrado}</td>
+          <td>{consolidado.nombrePosgrado}</td>
+          <td>{consolidado.total_ingresos.toLocaleString()}</td>
+          <td>{consolidado.total_descuentos.toLocaleString()}</td>
+          <td>{consolidado.total_neto.toLocaleString()}</td>
+          <td>{consolidado.contribucion.toLocaleString()}</td>
+          <td>{consolidado.total_disponible.toLocaleString()}</td>
+          <td>{consolidado.gastos_certificados.toLocaleString()}</td>
+          <td>{consolidado.saldo.toLocaleString()}</td>
+        </tr>,
+      ]
+    : [
+        <tr>
+          <td colSpan="9">No data available</td>
+        </tr>,
+      ];
 
   const displayDataJson = JsonData.map((info, index) => (
     <tr key={info.id || index}>
@@ -142,12 +145,37 @@ function ControlledTabs({ mes, anio, codigo }) {
           <Tab eventKey="gastos" title="GASTOS">
             <ResponsiveTable
               data={displayDataGastos}
-              lista={[ "ID", "Tipo Documento", "Número Movimiento", "Fecha", "Cuenta Movimiento", "Observación", "Valor Definitivo","Valor Registro","Valor Ejecutado", "Valor Pagado","Saldo","Estado",
+              lista={[
+                "ID",
+                "Tipo Documento",
+                "Número Movimiento",
+                "Fecha",
+                "Cuenta Movimiento",
+                "Observación",
+                "Valor Definitivo",
+                "Valor Registro",
+                "Valor Ejecutado",
+                "Valor Pagado",
+                "Saldo",
+                "Estado",
               ]}
             />
           </Tab>
           <Tab eventKey="descuentos" title="DESCUENTOS">
-          <ResponsiveTable data={displayDataConsolidado} lista={[   "Código Posgrado", "Nombre Posgrado", "Total Ingresos",  "Total Descuentos",  "Total Neto",  "Contribución", "Total Disponible","Gastos Certificados","Saldo"]} /> 
+            <ResponsiveTable
+              data={displayDataConsolidado}
+              lista={[
+                "Código Posgrado",
+                "Nombre Posgrado",
+                "Total Ingresos",
+                "Total Descuentos",
+                "Total Neto",
+                "Contribución",
+                "Total Disponible",
+                "Gastos Certificados",
+                "Saldo",
+              ]}
+            />
           </Tab>
         </Tabs>
       </div>

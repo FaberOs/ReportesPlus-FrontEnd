@@ -24,7 +24,7 @@ const SectionContainer = ({ titulo }) => {
         <IconButton
           buttonText="DESCARGAR ARCHIVO"
           icon={<FontAwesomeIcon icon={faDownload} />}
-          darkTheme={isDarkTheme}
+          variant="default"
         />
       </div>
     </div>
