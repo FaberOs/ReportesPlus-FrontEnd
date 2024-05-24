@@ -61,7 +61,6 @@ function UserConsult() {
       });
       console.log(response.data); // Mostrar la respuesta del servidor
       //localStorage.setItem("User",1);
-      alert("si");
       Cookies.set('user', 1, { path: '/' });
       setEstado("S");
       setAccionT(true);

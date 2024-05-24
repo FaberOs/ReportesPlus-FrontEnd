@@ -60,6 +60,79 @@ const VerificarSesion = () => {
 // "User" => 3  
 // "User" => 4  mantiene sesion
 
+const ProteccionRutasHome = () =>{
+    if(Cookies.get('user') == 1 || Cookies.get('user') == 4){
+      return(
+        <Home />
+      );
+    }else{
+      return(
+        <Navigate to="/login" replace />
+      );
+    }
+  };
+
+  const ProteccionRutasconsultar = () =>{
+    if(Cookies.get('user') == 1 || Cookies.get('user') == 4){
+      return(
+        <ConsultPos />
+      );
+    }else{
+      return(
+        <Navigate to="/login" replace />
+      );
+    }
+  };
+
+  const ProteccionRutasReportesPos = () =>{
+    if(Cookies.get('user') == 1 || Cookies.get('user') == 4){
+      return(
+        <ReportePos />
+      );
+    }else{
+      return(
+        <Navigate to="/login" replace />
+      );
+    }
+  };
+
+  const ProteccionRutasConsultMacro = () =>{
+    if(Cookies.get('user') == 1 || Cookies.get('user') == 4){
+      return(
+        <ConsultMacro />
+      );
+    }else{
+      return(
+        <Navigate to="/login" replace />
+      );
+    }
+  };
+
+  const ProteccionRutasReporteMacro = () =>{
+    if(Cookies.get('user') == 1 || Cookies.get('user') == 4){
+      return(
+        <ReporteMacro />
+      );
+    }else{
+      return(
+        <Navigate to="/login" replace />
+      );
+    }
+  };
+
+  const ProteccionRutasAdminTemplate = () =>{
+    if(Cookies.get('user') == 1 || Cookies.get('user') == 4){
+      return(
+        <AdminTemplate />
+      );
+    }else{
+      return(
+        <Navigate to="/login" replace />
+      );
+    }
+  };
+
+
 function App() {
 
   return (
@@ -72,15 +145,15 @@ function App() {
         <Route path="*" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/consultar" element={<ConsultPos />} />
-        <Route path="/consultar/reporte-posgrado" element={<ReportePos />} />
-        <Route path="/consultar-macro" element={<ConsultMacro />} />
+        <Route path="/home" element={<ProteccionRutasHome />} />
+        <Route path="/consultar" element={<ProteccionRutasconsultar />} />
+        <Route path="/consultar/reporte-posgrado" element={<ProteccionRutasReportesPos />} />
+        <Route path="/consultar-macro" element={<ProteccionRutasConsultMacro />} />
         <Route
           path="/consultar-macro/reporte-macro"
-          element={<ReporteMacro />}
+          element={<ProteccionRutasReporteMacro />}
         />
-        <Route path="/admin" element={<AdminTemplate />}>
+        <Route path="/admin" element={<ProteccionRutasAdminTemplate />}>
           <Route path="dashboard" element={<AdminPos />} />
           <Route path="posgrados" element={<AdminPos />} />
           <Route path="pregrados" element={<AdminPos />} />
