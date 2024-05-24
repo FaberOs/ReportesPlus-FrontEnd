@@ -1,21 +1,48 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../../Styles/Layout/StyleTabla.css";
 import SectionContainer from "../Common/SectionContainer.jsx";
 import ControlledTabs from "./ControlledTabs.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
+import {cleanText } from "../Utils/Utils.jsx";
 
 const TableTabs = ({ mes, anio, codigo }) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
+  const [nombrePosgrado, setNombrePosgrado] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/v1/posgrados/reporte/ingresos`, {
+          params: {
+            mes: mes,
+            anio: anio,
+            codigo: codigo
+          }
+        });
+        const data = response.data;
+        const cleanedNombrePosgrado = cleanText(data.nombrePosgrado); // Limpia el nombre del posgrado
+        setNombrePosgrado(cleanedNombrePosgrado);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [mes, anio, codigo]);
 
   return (
-    <div
-      className={`d-flex justify-content-center ${
-        isDarkTheme ? "dark-theme" : ""
-      }`}
-    >
+    <div className={`d-flex justify-content-center ${isDarkTheme ? "dark-theme" : ""}`}>
       <div className="col-11">
         <div>
-          <SectionContainer titulo="REPORTE GENERAL DE POSGRADOS" />
+          <SectionContainer 
+            titulo={`REPORTE GENERAL DE ${nombrePosgrado}`}
+            mes={mes}
+            anio={anio}
+            codigo={codigo}
+            nombrePosgrado={nombrePosgrado} // Pass the nombrePosgrado parameter
+          />
         </div>
         <div className="contenedor">
           <ControlledTabs mes={mes} anio={anio} codigo={codigo} />

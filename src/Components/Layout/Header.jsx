@@ -57,7 +57,7 @@ const Header = () => {
   return (
     <header ref={headerRef} className="custom-header" id={contextTheme}>
       <div className="logo-container">
-        <a href="/">
+        <a href="/home">
           <img
             className="logoU"
             src={contextTheme === "Light" ? logoULight : logoUDark}

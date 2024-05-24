@@ -56,7 +56,7 @@ function Login() {
         clave: password,
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      login(); // Actualiza el estado de autenticación
+      login(username); // Actualiza el estado de autenticación
       navigate("/home"); // Redirigir a la ruta de consulta
     } catch (error) {
       console.error("Error de autenticación", error);
