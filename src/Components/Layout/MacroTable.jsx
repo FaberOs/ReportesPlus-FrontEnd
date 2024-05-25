@@ -67,7 +67,7 @@ const MacroTable = ({ mes, anio, codigo }) => {
       }`}
     >
       <div className="col-11">
-        <SectionContainer titulo="REPORTE MACRO" />
+        <SectionContainer titulo="REPORTE MACRO POSGRADO" />
         <div className="contenedor d-flex justify-content-center">
           {isLoading ? (
             <div

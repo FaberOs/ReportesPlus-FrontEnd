@@ -56,18 +56,18 @@ function Login() {
         clave: password,
       });
       console.log(response.data); // Mostrar la respuesta del servidor
-      login(); // Actualiza el estado de autenticación
+      login(username); // Actualiza el estado de autenticación
       navigate("/home"); // Redirigir a la ruta de consulta
     } catch (error) {
       console.error("Error de autenticación", error);
       if (error.response && error.response.status === 401) {
-        localStorage.setItem("User",3);
+        localStorage.setItem("User", 3);
         setEstado("E");
         setAccionT(true);
         setMessage("Credenciales invalidas");
         alert("Credenciales inválidas"); // Notificar al usuario
       } else {
-        localStorage.setItem("User",3);
+        localStorage.setItem("User", 3);
         setEstado("E");
         setAccionT(true);
         setMessage("Error en el servidor");
@@ -83,24 +83,23 @@ function Login() {
   };
 
   const Notificacion = () => {
-    if (localStorage.getItem("User") == 2) {    
+    if (localStorage.getItem("User") == 2) {
       setEstado("S");
       setAccionT(true);
-      setMessage("sesion cerrada");    
-      localStorage.setItem("User",3);       
-    }else if(localStorage.getItem("User") == 3){
-      localStorage.setItem("User",0);
+      setMessage("sesion cerrada");
+      localStorage.setItem("User", 3);
+    } else if (localStorage.getItem("User") == 3) {
+      localStorage.setItem("User", 0);
       return <ToastNotify accionar={accionT} tipo={estado} msj={message} />;
     }
-    
   };
 
   return (
     <div>
       <header>
-      <div>
-      <Header username={username} />
-      </div>
+        <div>
+          <Header username={username} />
+        </div>
       </header>
       <main>
         <>

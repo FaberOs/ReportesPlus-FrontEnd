@@ -1,5 +1,3 @@
-// ModalGeneric.jsx
-
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -27,7 +25,7 @@ const ModalGeneric = ({
       keyboard={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      className={`confirmModal ${isDarkTheme ? "dark-theme" : ""}`}
+      className={`modal-generic ${isDarkTheme ? "dark-theme" : ""}`}
     >
       <Modal.Body>
         <div>
@@ -61,6 +59,7 @@ ModalGeneric.propTypes = {
   contenido: PropTypes.string.isRequired,
   show: PropTypes.func,
   handleClose: PropTypes.func,
+  rutaConfirmacion: PropTypes.string.isRequired,
 };
 
 export default ModalGeneric;

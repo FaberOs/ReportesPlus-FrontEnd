@@ -5,9 +5,18 @@ import Pagination from "react-bootstrap/Pagination";
 import "../../Styles/Components/Table.css";
 import { useThemeContext } from "../../ThemeContext";
 
+import { Modal, ModalTitle, ModalHeader, ModalBody } from "react-bootstrap";
+
 function ResponsiveTable({ data, lista }) {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
+
+  const [modalInfo, setModalInfo] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -18,8 +27,53 @@ function ResponsiveTable({ data, lista }) {
   const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
+  const ModalContent = () => {
+    return (
+      <Modal
+        centered
+        show={show}
+        onHide={handleClose}
+        size="lg"
+        className={`modal-responsive-table ${isDarkTheme ? "dark-modal" : ""}`}
+      >
+        <ModalHeader closeButton className="modal-header">
+          <ModalTitle className="modal-title">
+            Información Seleccionada
+          </ModalTitle>
+        </ModalHeader>
+
+        <ModalBody className="modal-body">
+          {modalInfo.map((info, index) => (
+            <div key={index}>
+              <p>
+                <strong className="item-col">{lista[index]}:</strong> {info}
+              </p>
+            </div>
+          ))}
+        </ModalBody>
+      </Modal>
+    );
+  };
+
+  const identifyRowClick = (event) => {
+    const tr = event.target.closest("tr");
+    if (tr) {
+      const rowData = Array.from(tr.children).map((cell) => cell.textContent);
+      setModalInfo(rowData);
+      setShowModal(handleShow);
+    }
+  };
+
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleFirstPageClick = () => {
+    setCurrentPage(1);
+  };
+
+  const handleLastPageClick = () => {
+    setCurrentPage(totalPages);
   };
 
   const renderPaginationItems = () => {
@@ -71,27 +125,39 @@ function ResponsiveTable({ data, lista }) {
         <thead>
           <tr>
             {lista.map((l, index) => (
-              <th key={index}> {l} </th>
+              <td key={index}> {l} </td>
             ))}
           </tr>
         </thead>
-        <tbody>{currentData}</tbody>
+
+        <tbody onClick={identifyRowClick}>
+          {currentData.map((row) => {
+            return row;
+          })}
+        </tbody>
       </Table>
       {data.length > itemsPerPage && (
         <Pagination className={`pagination ${isDarkTheme ? "dark-pager" : ""}`}>
+          <Pagination.First
+            onClick={handleFirstPageClick}
+            disabled={currentPage === 1}
+          />
           <Pagination.Prev
-            onClick={() =>
-              currentPage > 1 && setCurrentPage((prev) => prev - 1)
-            }
+            onClick={() => handleClick(currentPage - 1)}
+            disabled={currentPage === 1}
           />
           {renderPaginationItems()}
           <Pagination.Next
-            onClick={() =>
-              currentPage < totalPages && setCurrentPage((prev) => prev + 1)
-            }
+            onClick={() => handleClick(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          />
+          <Pagination.Last
+            onClick={handleLastPageClick}
+            disabled={currentPage === totalPages}
           />
         </Pagination>
       )}
+      {show ? <ModalContent /> : null}
     </div>
   );
 }

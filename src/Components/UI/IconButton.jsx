@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import "../../Styles/Components/IconButton.css";
 import { useThemeContext } from "../../ThemeContext.jsx";
 
-const IconButton = ({ buttonText, icon, variant }) => {
+const IconButton = ({ buttonText, icon, variant, onClick }) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
 
@@ -11,6 +11,7 @@ const IconButton = ({ buttonText, icon, variant }) => {
       className={`icon-button ${variant} ${
         isDarkTheme ? `dark-${variant}` : ""
       }`}
+      onClick={onClick}
     >
       {buttonText}
       <span className={`icon ${isDarkTheme ? "dark-icon" : ""}`}>{icon}</span>
@@ -22,6 +23,7 @@ IconButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
   variant: PropTypes.oneOf(["default", "outline"]),
+  onClick: PropTypes.func, // New prop type for onClick
 };
 
 IconButton.defaultProps = {
