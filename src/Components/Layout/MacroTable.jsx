@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Layout/StyleTabla.css";
-import SectionContainer from "../Common/SectionContainer.jsx";
+import SectionContainerMacro from "../Common/SectionContainerMacro.jsx";
 import ResponsiveTable from "./ResponsiveTable.jsx";
 import LoaderSpineer from "../Common/LoaderSpinner.jsx";
+import SimpleButton from "../UI/SimpleButton.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
 
 const MacroTable = ({ mes, anio, codigo }) => {
@@ -67,7 +69,22 @@ const MacroTable = ({ mes, anio, codigo }) => {
       }`}
     >
       <div className="col-11">
-        <SectionContainer titulo="REPORTE MACRO POSGRADO" />
+        <SectionContainerMacro
+          titulo="REPORTE MACRO POSGRADO"
+          mes={mes}
+          anio={anio}
+          codigo={codigo}
+          nombrePosgrado="ReporteMacro"
+        />
+        <div className="contenedor instrucciones">
+          <p className="instrucciones-texto">
+            Haga clic en una fila para ver más información
+            <span className="asterisco">*</span>
+          </p>
+          <Link to="/consultar-macro" style={{ textDecoration: "none" }}>
+            <SimpleButton buttonText="REGRESAR" variant="outline" />
+          </Link>
+        </div>
         <div className="contenedor d-flex justify-content-center">
           {isLoading ? (
             <div

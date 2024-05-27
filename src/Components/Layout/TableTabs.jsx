@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Layout/StyleTabla.css";
 import SectionContainer from "../Common/SectionContainer.jsx";
 import ControlledTabs from "./ControlledTabs.jsx";
+import SimpleButton from "../UI/SimpleButton.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
 import { cleanText } from "../Features/Utils.jsx";
 
@@ -50,6 +52,15 @@ const TableTabs = ({ mes, anio, codigo }) => {
             codigo={codigo}
             nombrePosgrado={nombrePosgrado} // Pass the nombrePosgrado parameter
           />
+        </div>
+        <div className="contenedor instrucciones">
+          <p className="instrucciones-texto">
+            Haga clic en una fila para ver más información
+            <span className="asterisco">*</span>
+          </p>
+          <Link to="/consultar" style={{ textDecoration: "none" }}>
+            <SimpleButton buttonText="REGRESAR" variant="outline" />
+          </Link>
         </div>
         <div className="contenedor">
           <ControlledTabs mes={mes} anio={anio} codigo={codigo} />
