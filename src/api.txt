@@ -7,3 +7,5 @@ http://localhost:8080/api/v1/posgrados/reporte/consolidado?mes=marzo&anio=2022&c
 http://localhost:8080/api/v1/posgrados/reportemacro?mes=diciembre&anio=2021&codigo=1
 
 http://localhost:8080/api/v1/posgrados/reporte/excel/ingreso-gastos?mes=diciembre&anio=2021&codigo=1432002
+
+http://localhost:8080/api/v1/posgrados/reporte/excel/macro?mes=diciembre&anio=2021&codigo=14

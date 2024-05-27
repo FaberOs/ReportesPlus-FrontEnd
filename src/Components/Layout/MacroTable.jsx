@@ -5,6 +5,7 @@ import SectionContainer from "../Common/SectionContainer.jsx";
 import ResponsiveTable from "./ResponsiveTable.jsx";
 import LoaderSpineer from "../Common/LoaderSpinner.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
+import SectionContainerMacro from "../Common/SectionContainerMacro.jsx";
 
 const MacroTable = ({ mes, anio, codigo }) => {
   const { contextTheme } = useThemeContext();
@@ -67,7 +68,13 @@ const MacroTable = ({ mes, anio, codigo }) => {
       }`}
     >
       <div className="col-11">
-        <SectionContainer titulo="REPORTE MACRO POSGRADO" />
+        <SectionContainerMacro
+            titulo="REPORTE MACRO POSGRADO" 
+            mes={mes}
+            anio={anio}
+            codigo={codigo}
+            nombrePosgrado="ReporteMacro" />
+
         <div className="contenedor d-flex justify-content-center">
           {isLoading ? (
             <div
