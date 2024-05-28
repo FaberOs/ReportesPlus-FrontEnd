@@ -167,9 +167,4 @@ ResponsiveTable.propTypes = {
   lista: PropTypes.array.isRequired,
 };
 
-ResponsiveTable.propTypes = {
-  data: PropTypes.array.isRequired,
-  lista: PropTypes.array.isRequired,
-};
-
 export default ResponsiveTable;

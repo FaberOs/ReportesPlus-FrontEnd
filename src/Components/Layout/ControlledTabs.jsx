@@ -2,13 +2,7 @@ import { useEffect, useState } from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Tabs, Tab } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import ResponsiveTable from "./ResponsiveTable.jsx";
-import JsonData from "../Features/data.json";
-import "../../Styles/Layout/StyleTabla.css";
 import JsonData from "../Features/data.json";
 import "../../Styles/Layout/StyleTabla.css";
 
@@ -135,62 +129,55 @@ function ControlledTabs({ mes, anio, codigo }) {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="container-fluid">
-          <div className="row">
-            <Tabs
-              id="justify-tab-example"
-              id="justify-tab-example"
-              activeKey={key}
-              onSelect={(k) => setKey(k)}
-              className="mb-3 mt-2"
-              justify
-              className="mb-3 mt-2"
-              justify
-            >
-              <Tab eventKey="ingresos" title="INGRESOS">
-                <ResponsiveTable
-                  data={displayDataIngresos}
-                  lista={columnTitlesIngresos}
-                />
-              </Tab>
-              <Tab eventKey="gastos" title="GASTOS">
-                <ResponsiveTable
-                  data={displayDataGastos}
-                  lista={[
-                    "ID",
-                    "Tipo Documento",
-                    "Número Movimiento",
-                    "Fecha",
-                    "Cuenta Movimiento",
-                    "Observación",
-                    "Valor Definitivo",
-                    "Valor Registro",
-                    "Valor Ejecutado",
-                    "Valor Pagado",
-                    "Saldo",
-                    "Estado",
-                  ]}
-                />
-              </Tab>
-              <Tab eventKey="descuentos" title="DESCUENTOS">
-                <ResponsiveTable
-                  data={displayDataConsolidado}
-                  lista={[
-                    "Código Posgrado",
-                    "Nombre Posgrado",
-                    "Total Ingresos",
-                    "Total Descuentos",
-                    "Total Neto",
-                    "Contribución",
-                    "Total Disponible",
-                    "Gastos Certificados",
-                    "Saldo",
-                  ]}
-                />
-              </Tab>
-            </Tabs>
-          </div>
-        </div>
+        <Tabs
+          id="justify-tab-example"
+          activeKey={key}
+          onSelect={(k) => setKey(k)}
+          className="mb-3 mt-2"
+          justify
+        >
+          <Tab eventKey="ingresos" title="INGRESOS">
+            <ResponsiveTable
+              data={displayDataIngresos}
+              lista={columnTitlesIngresos}
+            />
+          </Tab>
+          <Tab eventKey="gastos" title="GASTOS">
+            <ResponsiveTable
+              data={displayDataGastos}
+              lista={[
+                "ID",
+                "Tipo Documento",
+                "Número Movimiento",
+                "Fecha",
+                "Cuenta Movimiento",
+                "Observación",
+                "Valor Definitivo",
+                "Valor Registro",
+                "Valor Ejecutado",
+                "Valor Pagado",
+                "Saldo",
+                "Estado",
+              ]}
+            />
+          </Tab>
+          <Tab eventKey="descuentos" title="DESCUENTOS">
+            <ResponsiveTable
+              data={displayDataConsolidado}
+              lista={[
+                "Código Posgrado",
+                "Nombre Posgrado",
+                "Total Ingresos",
+                "Total Descuentos",
+                "Total Neto",
+                "Contribución",
+                "Total Disponible",
+                "Gastos Certificados",
+                "Saldo",
+              ]}
+            />
+          </Tab>
+        </Tabs>
       </div>
     </div>
   );
