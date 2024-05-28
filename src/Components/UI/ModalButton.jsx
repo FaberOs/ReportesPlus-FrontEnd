@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PropTypes from "prop-types"; // Importa PropTypes para validar las props
-import "../../Styles/Components/SimpleButton.css";
+import PropTypes from "prop-types";
+import "../../Styles/Components/ModalButton.css";
 
 import ModalGeneric from "../Common/Modal.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
@@ -10,6 +10,8 @@ const ModalButton = ({
   tituloModal,
   contenidoModal,
   rutaModal,
+  variant,
+  disabled,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -22,9 +24,12 @@ const ModalButton = ({
   return (
     <>
       <button
-        className={`btn-button ${isDarkTheme ? "dark-SimpleButton" : ""}`}
-        type="submit"
+        className={`modal-button ${variant} ${
+          isDarkTheme ? `dark-${variant}` : ""
+        }`}
+        type="button"
         onClick={handleShow}
+        disabled={disabled}
       >
         {buttonText}
       </button>
@@ -39,12 +44,17 @@ const ModalButton = ({
   );
 };
 
-// Define PropTypes para asegurarte de que se pasen las props correctamente
 ModalButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
   tituloModal: PropTypes.string.isRequired,
   contenidoModal: PropTypes.string.isRequired,
   rutaModal: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(["default", "outline"]),
+  disabled: PropTypes.bool,
+};
+
+ModalButton.defaultProps = {
+  variant: "default",
 };
 
 export default ModalButton;

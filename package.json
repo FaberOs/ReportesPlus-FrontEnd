@@ -13,7 +13,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios": "^1.6.8",
+    "all": "^0.0.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "query-string": "^9.0.0",
     "react": "^18.2.0",
@@ -22,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-switch": "^7.0.0",
+    "unorm": "^1.6.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

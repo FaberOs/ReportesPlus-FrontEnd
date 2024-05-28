@@ -1,5 +1,4 @@
 import Modal from "react-bootstrap/Modal";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../../Styles/Components/Modal.css";
 
@@ -7,13 +6,7 @@ import SimpleButton from "../UI/SimpleButton.jsx";
 import IconInfo from "../../Assets/IconInfo.svg";
 import { useThemeContext } from "../../ThemeContext.jsx";
 
-const ModalGeneric = ({
-  show,
-  handleClose,
-  titulo,
-  contenido,
-  rutaConfirmacion,
-}) => {
+const ModalError = ({ show, handleClose }) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
 
@@ -33,20 +26,18 @@ const ModalGeneric = ({
             <img className="advertenciaico" src={IconInfo} alt="advertencia" />
           </div>
           <div className={`modalHeader ${isDarkTheme ? "dark-text" : ""}`}>
-            {titulo}
+            Código Incorrecto
           </div>
           <div className={`modalBody ${isDarkTheme ? "dark-text" : ""}`}>
-            {contenido}
+            El código proporcionado es incorrecto. Por favor, verifique y vuelva
+            a intentarlo.
           </div>
           <div className="modalFooter">
             <SimpleButton
-              buttonText="No"
+              buttonText="CERRAR"
               onClick={handleClose}
-              variant="outline"
+              variant="default"
             />
-            <Link to={rutaConfirmacion} style={{ textDecoration: "none" }}>
-              <SimpleButton buttonText="Sí" variant="default" />
-            </Link>
           </div>
         </div>
       </Modal.Body>
@@ -54,12 +45,9 @@ const ModalGeneric = ({
   );
 };
 
-ModalGeneric.propTypes = {
-  titulo: PropTypes.string.isRequired,
-  contenido: PropTypes.string.isRequired,
-  show: PropTypes.func,
-  handleClose: PropTypes.func,
-  rutaConfirmacion: PropTypes.string.isRequired,
+ModalError.propTypes = {
+  show: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
-export default ModalGeneric;
+export default ModalError;

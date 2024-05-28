@@ -9,6 +9,7 @@ import {
   faCog,
 } from "@fortawesome/free-solid-svg-icons";
 import "../../Styles/Components/UserMenu.css";
+import { useAuth } from "../../Context/AuthProvider";
 
 const UserMenu = () => {
   const { contextTheme } = useThemeContext();
@@ -16,15 +17,17 @@ const UserMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { username, logout } = useAuth();
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
 
   const handleLogout = () => {
-    console.log("Sesión cerrada por inactividad.");
-    navigate('/login'); // o la ruta que corresponda a tu página de login
-
+    localStorage.setItem("User", 2);
+    //console.log("Sesión cerrada por inactividad.");
+    logout();
+    navigate("/login"); // o la ruta que corresponda a tu página de login
   };
 
   return (
@@ -40,7 +43,7 @@ const UserMenu = () => {
           className="user-button"
         >
           <FontAwesomeIcon icon={faUserCircle} size="lg" />
-          <span className="user-name">Usuario</span>
+          <span className="user-name">{username}</span>
         </Dropdown.Toggle>
 
         <Dropdown.Menu className={`dropdown-menu ${isDarkTheme ? "dark" : ""}`}>

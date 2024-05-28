@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes, Navigate, Outlet } from "react-router-dom";
-import { AuthProvider, useAuth } from "./Context/AuthProvider.jsx";
+import { AuthProvider } from "./Context/AuthProvider.jsx";
 
 import Sidebar from "./Components/Layout/Sidebar.jsx";
 import ConsultPos from "./Pages/ConsultPos";
@@ -10,6 +10,7 @@ import AdminPos from "./Pages/AdminPos";
 import Home from "./Pages/Home";
 import ConsultMacro from "./Pages/ConsultMacro";
 import ReporteMacro from "./Pages/ReporteMacro";
+import ProtectedRoute from "./Context/ProtectedRoute.jsx";
 
 const AdminTemplate = () => {
   return (
@@ -20,40 +21,68 @@ const AdminTemplate = () => {
   );
 };
 
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useAuth();
-
-  if (!isAuthenticated) {
-    // Redirecciona a la página de login si el usuario no está autenticado
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
-};
-
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/consultar" element={<ConsultPos />} />
-        <Route path="/consultar/reporte-posgrado" element={<ReportePos />} />
-        <Route path="/consultar-macro" element={<ConsultMacro />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/consultar"
+          element={
+            <ProtectedRoute>
+              <ConsultPos />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/consultar/reporte-posgrado"
+          element={
+            <ProtectedRoute>
+              <ReportePos />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/consultar-macro"
+          element={
+            <ProtectedRoute>
+              <ConsultMacro />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/consultar-macro/reporte-macro"
-          element={<ReporteMacro />}
+          element={
+            <ProtectedRoute>
+              <ReporteMacro />
+            </ProtectedRoute>
+          }
         />
-        <Route path="/admin" element={<AdminTemplate />}>
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminTemplate />
+            </ProtectedRoute>
+          }
+        >
           <Route path="dashboard" element={<AdminPos />} />
           <Route path="posgrados" element={<AdminPos />} />
           <Route path="pregrados" element={<AdminPos />} />
         </Route>
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
 

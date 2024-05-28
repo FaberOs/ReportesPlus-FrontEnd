@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/Layout/StyleTabla.css";
-import SectionContainer from "../Common/SectionContainer.jsx";
+import SectionContainerMacro from "../Common/SectionContainerMacro.jsx";
 import ResponsiveTable from "./ResponsiveTable.jsx";
+import LoaderSpineer from "../Common/LoaderSpinner.jsx";
+import SimpleButton from "../UI/SimpleButton.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
 
-const MacroTable = ({ mes, anio }) => {
+const MacroTable = ({ mes, anio, codigo }) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // controlar LoadSpinner
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `http://localhost:8080/api/v1/posgrados/reportemacro?mes=${mes}&anio=${anio}`;
+        const url = `http://localhost:8080/api/v1/posgrados/reportemacro?mes=${mes}&anio=${anio}&codigo=${codigo}`;
         const response = await axios.get(url);
         if (response.data && response.data.consolidados) {
           setData(response.data.consolidados);
+          setIsLoading(false); // Oculta LoadSpinner info. lista
         } else {
           setData([]);
         }
@@ -64,9 +69,41 @@ const MacroTable = ({ mes, anio }) => {
       }`}
     >
       <div className="col-11">
-        <SectionContainer titulo="REPORTE MACRO" />
-        <div className="contenedor">
-          <ResponsiveTable data={displayDataMacro} lista={columns} />
+        <SectionContainerMacro
+          titulo="REPORTE MACRO POSGRADO"
+          mes={mes}
+          anio={anio}
+          codigo={codigo}
+          nombrePosgrado="ReporteMacro"
+        />
+        <div className="contenedor instrucciones">
+          <p className="instrucciones-texto">
+            Haga clic en una fila para ver más información
+            <span className="asterisco">*</span>
+          </p>
+          <Link to="/consultar-macro" style={{ textDecoration: "none" }}>
+            <SimpleButton buttonText="REGRESAR" variant="outline" />
+          </Link>
+        </div>
+        <div className="contenedor d-flex justify-content-center">
+          {isLoading ? (
+            <div
+              className=""
+              style={{
+                paddingBottom: "90px",
+                paddingTop: "90px",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <LoaderSpineer />
+              <div className="texto-loader-spinner">
+                <h4> Consultando reporte, por favor espere... </h4>
+              </div>
+            </div>
+          ) : (
+            <ResponsiveTable data={displayDataMacro} lista={columns} />
+          )}
         </div>
       </div>
     </div>

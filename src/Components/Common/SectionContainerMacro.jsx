@@ -6,13 +6,19 @@ import IconButton from "../UI/IconButton.jsx";
 import { useThemeContext } from "../../ThemeContext.jsx";
 import axios from "axios";
 
-const SectionContainer = ({ titulo, mes, anio, codigo, nombrePosgrado }) => {
+const SectionContainerMacro = ({
+  titulo,
+  mes,
+  anio,
+  codigo,
+  nombrePosgrado,
+}) => {
   const { contextTheme } = useThemeContext();
   const isDarkTheme = contextTheme === "Dark";
 
   const handleDownload = async () => {
     try {
-      const url = `http://localhost:8080/api/v1/posgrados/reporte/excel/ingreso-gastos?mes=${mes}&anio=${anio}&codigo=${codigo}`;
+      const url = `http://localhost:8080/api/v1/posgrados/reporte/excel/macro?mes=${mes}&anio=${anio}&codigo=${codigo}`;
       const response = await axios.get(url, {
         responseType: "blob", // Important to receive the file as a blob
       });
@@ -34,6 +40,7 @@ const SectionContainer = ({ titulo, mes, anio, codigo, nombrePosgrado }) => {
       document.body.removeChild(link);
     } catch (error) {
       console.error("Error downloading file:", error);
+      alert("Error descargando el archivo. Por favor, inténtalo de nuevo.");
     }
   };
 
@@ -51,14 +58,14 @@ const SectionContainer = ({ titulo, mes, anio, codigo, nombrePosgrado }) => {
           buttonText="DESCARGAR ARCHIVO"
           icon={<FontAwesomeIcon icon={faDownload} />}
           variant="default"
-          onClick={handleDownload} // Pass the handleDownload function
+          onClick={handleDownload}
         />
       </div>
     </div>
   );
 };
 
-SectionContainer.propTypes = {
+SectionContainerMacro.propTypes = {
   titulo: PropTypes.string.isRequired,
   mes: PropTypes.string.isRequired,
   anio: PropTypes.number.isRequired,
@@ -66,4 +73,4 @@ SectionContainer.propTypes = {
   nombrePosgrado: PropTypes.string.isRequired,
 };
 
-export default SectionContainer;
+export default SectionContainerMacro;

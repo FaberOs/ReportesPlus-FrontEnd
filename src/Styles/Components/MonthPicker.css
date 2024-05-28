@@ -51,3 +51,14 @@
 .dark-theme .monthpicker::placeholder {
   color: var(--white); /* Color gris oscuro para el placeholder */
 }
+
+.error-message {
+  color: red; /* Color rojo para el mensaje de error */
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.dark-error {
+  color: red; /* Color para el mensaje de error en tema oscuro */
+}

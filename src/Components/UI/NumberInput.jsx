@@ -1,21 +1,37 @@
 import { useThemeContext } from "../../ThemeContext";
 import PropTypes from "prop-types";
-import { useState } from "react"; // Importamos useState para manejar el estado del input
+import { useState } from "react";
 import "../../Styles/Components/TextInput.css";
 
-const TextInput = ({ label, type, placeholder, onChange, required }) => {
+const NumberInput = ({
+  label,
+  type,
+  placeholder,
+  onChange,
+  onlyNumbers,
+  required,
+}) => {
   const { contextTheme } = useThemeContext();
   const [inputValue, setInputValue] = useState("");
   const [touched, setTouched] = useState(false); // Estado para rastrear si el input ha sido tocado
 
   const handleChange = (e) => {
     const { value } = e.target;
-    console.log("Value: ", value);
-    setInputValue(value);
-    console.log("Value 1: ", value);
-    if (onChange) {
+    setTouched(true); // Marcar el input como tocado cuando cambia su valor
+    if (onlyNumbers) {
+      // Filtra la entrada para que solo permita números
+      const numericValue = value.replace(/[^0-9]/g, "");
+      setInputValue(numericValue);
+      onChange(numericValue);
+    } else {
+      setInputValue(value);
       onChange(value);
-      console.log("Value 2: ", value);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (onlyNumbers && !/[0-9]/.test(e.key)) {
+      e.preventDefault();
     }
   };
 
@@ -37,8 +53,11 @@ const TextInput = ({ label, type, placeholder, onChange, required }) => {
         className={`textInput ${contextTheme === "Dark" ? "dark-input" : ""}`}
         placeholder={placeholder}
         value={inputValue}
-        onChange={handleChange} // Propagamos el evento onChange al input
+        onChange={handleChange} // Usamos handleChange para filtrar entrada
+        onKeyPress={handleKeyPress} // Interceptamos el evento onKeyPress
         onBlur={handleBlur} // Manejador para rastrear cuando se pierde el foco
+        inputMode={onlyNumbers ? "numeric" : "text"} // Muestra el teclado numérico en móviles si es necesario
+        pattern={onlyNumbers ? "[0-9]*" : undefined} // Permite solo números si es necesario
       />
       {required && touched && inputValue.trim() === "" && (
         <div
@@ -53,18 +72,19 @@ const TextInput = ({ label, type, placeholder, onChange, required }) => {
   );
 };
 
-// Define PropTypes para asegurarte de que se pasen las props correctamente
-TextInput.propTypes = {
+NumberInput.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func,
-  type: PropTypes.string, // Agregamos type a las propTypes
+  onChange: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  onlyNumbers: PropTypes.bool,
   required: PropTypes.bool,
 };
 
-TextInput.defaultProps = {
-  type: "text", // Por defecto, el tipo es 'text'
-  required: false, // Por defecto, el campo no es requerido
+NumberInput.defaultProps = {
+  type: "text",
+  onlyNumbers: false,
+  required: false,
 };
 
-export default TextInput;
+export default NumberInput;

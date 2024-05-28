@@ -1,5 +1,3 @@
-/* StyleTabla.css */
-
 /* Tablas */
 
 .contenedor {
@@ -10,12 +8,32 @@
   padding: 20px 20px;
   background-color: var(--white);
   box-shadow: var(--shadow);
-}
-
-.contenedor {
   display: flex;
   width: 100%;
   align-items: center;
+}
+
+/* Contenedor con el botón de regresar e instrucciones */
+.contenedor.instrucciones {
+  justify-content: space-between; /* Alinea el texto a la izquierda y el botón a la derecha */
+  flex-direction: row; /* Alinea el texto y el botón horizontalmente */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+
+.instrucciones-texto {
+  margin: 0; /* Elimina márgenes adicionales */
+  margin-left: 10px;
+  margin-right: 10px;
+  color: var(--blue);
+  font-size: 16px;
+}
+
+.instrucciones-texto .asterisco {
+  color: red;
+}
+
+.dark-theme .instrucciones-texto {
+  color: var(--white);
 }
 
 /* ControlledTabs */
@@ -35,12 +53,11 @@
 }
 
 /* Dark Theme Styles */
-.dark-theme .contenedor,
-.dark-them {
+.dark-theme .contenedor {
   background-color: var(--dark-light-gray);
 }
 
-.dark-them h1 {
+.dark-theme h1 {
   color: var(--white);
 }
 
@@ -54,4 +71,18 @@
   color: var(--white);
   background-color: var(--light-blue);
   border-color: var(--light-blue);
+}
+
+.texto-loader-spinner {
+  color: var(--blue);
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.dark-theme .texto-loader-spinner {
+  color: var(--white);
 }

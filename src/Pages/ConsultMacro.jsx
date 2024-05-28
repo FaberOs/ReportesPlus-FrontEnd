@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useThemeContext } from "../ThemeContext.jsx";
 
 import Header from "../Components/Layout/Header.jsx";
 import Footer from "../Components/Layout/Footer.jsx";
 import ConsultForm from "../Components/Layout/ConsultForm.jsx";
 
-import TextInput from "../Components/UI/TextInput.jsx";
+import NumberInput from "../Components/UI/NumberInput.jsx";
 import MonthPicker from "../Components/UI/MonthPicker.jsx";
 import ModalButton from "../Components/UI/ModalButton.jsx";
+import SimpleButton from "../Components/UI/SimpleButton.jsx";
 
 import ImagenU from "../Assets/SantoDomingo.jpg";
 
@@ -20,6 +21,7 @@ function ConsultMacro() {
   const [mes, setMes] = useState("");
   const [anio, setAnio] = useState("");
   const [codigo, setCodigo] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   useEffect(() => {
     document.body.className = isDarkTheme ? "Dark" : "Light";
@@ -56,7 +58,8 @@ function ConsultMacro() {
 
   useEffect(() => {
     console.log("Estado actualizado: ", { mes, anio, codigo });
-  }, [mes, anio, codigo]);
+    setIsButtonDisabled(!(vigencia && codigo));
+  }, [mes, anio, codigo, vigencia]);
 
   return (
     <div>
@@ -72,18 +75,27 @@ function ConsultMacro() {
               label="Vigencia"
               placeholder="Selecciona la vigencia"
               onChange={(formattedDate) => setVigencia(formattedDate)}
+              required={true} // Marca el campo como requerido
             />
           }
           input2={
-            <TextInput
+            <NumberInput
               label="Código"
               placeholder="Ej. 140"
-              onChange={(e) => setCodigo(e.target.value)}
+              onChange={(value) => setCodigo(value)}
+              onlyNumbers={true}
+              required={true} // Marca el campo como requerido
             />
           }
           boton={
+            <Link to="/home" style={{ textDecoration: "none" }}>
+              <SimpleButton buttonText="REGRESAR" variant="outline" />
+            </Link>
+          }
+          boton2={
             <ModalButton
               buttonText="CONSULTAR"
+              variant="default"
               tituloModal="Confirmación"
               contenidoModal={`Desea generar la consulta para Reporte Macro? Fecha: ${mes} ${anio}, Código: ${codigo}`}
               rutaModal={`/consultar-macro/reporte-macro?mes=${encodeURIComponent(
@@ -91,6 +103,7 @@ function ConsultMacro() {
               )}&anio=${encodeURIComponent(anio)}&codigo=${encodeURIComponent(
                 codigo
               )}`}
+              disabled={isButtonDisabled}
             />
           }
         />
