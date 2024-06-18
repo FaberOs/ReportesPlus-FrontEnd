@@ -8,7 +8,7 @@ Este proyecto es una aplicación frontend desarrollada en React para proporciona
 
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
 - [Instalación](#instalación)
-- [Uso](#uso)
+- [Equipo de Proyecto](#equipo-de-proyecto)
 - [Enlace al Backend](#enlace-al-backend)
 - [Preview](#preview)
 
@@ -39,18 +39,18 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente:
    npm run dev
    ```
 
-## Uso
+## Equipo de Proyecto
 
-Una vez ejecutada la aplicación, los usuarios pueden:
-
-- Consultar información presupuestal en tiempo real.
-- Descargar informes en formato Excel.
+- [Faber Ospina](https://github.com/FaberOs) (líder de proyecto)
+- [Hamilto Pipicano](https://github.com/HamiltonP2018)
+- [Sebastain Bonilla](https://github.com/SebastianBonilla13)
+- [Camilo Gonzalez](https://github.com/pushino)
 
 ## Enlace al Backend
 
 Este proyecto frontend requiere un backend para funcionar correctamente. Puedes encontrar el repositorio del backend en el siguiente enlace:
 
-[Repositorio Backend - Información Presupuestal Universidad del Cauca](https://github.com/darwinlatorre/reportes-plus-API)
+[Repositorio Backend - Reportes-Plus-API](https://github.com/darwinlatorre/reportes-plus-API)
 
 ## Preview
 
