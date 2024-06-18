@@ -1,6 +1,0 @@
-npm install axios
-npm install xlsx
-
-npm install react-switch
-npm install query-string
-npm install unorm
